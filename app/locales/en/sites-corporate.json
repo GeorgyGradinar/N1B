@@ -1,0 +1,137 @@
+{
+  "servicesTree": {
+    "sites": {
+      "corporateContent": {
+        "section1": {
+          "title": "What is a corporate web application?",
+          "p1": "Corporate web applications are systems for internal use within an organization. They address specific needs: accounting, document flow, task management, reporting, and automation of routine work.",
+          "p2": "Such an application optimizes processes, reduces time spent on manual tasks, and cuts down on errors. It is built around your structure and way of working, not the other way around."
+        },
+        "section2": {
+          "title": "Who needs a corporate web application?",
+          "lead": "A corporate solution is right for you if:",
+          "items": [
+            "Your company has 10+ people and processes outgrow spreadsheets and messengers",
+            "You need a unified system for records, requests, tasks, or documents",
+            "You want to automate routine operations and reduce human error",
+            "Access control is required: different roles, departments, permission levels",
+            "You need to consolidate multiple tools into one platform"
+          ],
+          "footer": "If at least two points apply — a corporate application will solve your challenge."
+        },
+        "section3": {
+          "title": "What do you get?",
+          "items": [
+            "A web application designed around your business processes",
+            "Role-based access control system",
+            "Integration with existing services (ERP, CRM, email, messengers)",
+            "Monitoring dashboards and reporting",
+            "Responsive interface for any device",
+            "Documentation and team training"
+          ]
+        },
+        "section4": {
+          "title": "How we build it",
+          "lead": "We offer two approaches:",
+          "items": [
+            "Analysis of your current structure and processes — we look at how work is organized, find bottlenecks and automation opportunities, then design and build a web application to optimize those processes.",
+            "Build to a specific request — if you already have a clear brief or task description, we create a web application to your requirements without a prior analysis phase."
+          ],
+          "footer": "In both cases you get a working application that fits your environment and is ready to evolve."
+        },
+        "section5": {
+          "title": "How we work",
+          "p1": "We start by defining the goal and format: whether you need process analysis or you come with a ready request. Then we agree on scope, timeline, and priorities.",
+          "p2": "We develop in iterations: you see progress at each stage and can adjust direction. After launch we help with refinements, user training, and support."
+        },
+        "section6": {
+          "title": "Technology",
+          "p1": "We use a modern stack: Vue / Nuxt, React, Node.js, PostgreSQL, Docker. The choice depends on the task — we pick what fits your project best.",
+          "p2": "All applications are deployed to the cloud or your own servers, with automated deployment and monitoring."
+        },
+        "section7": {
+          "title": "Support and evolution",
+          "p1": "We don't abandon the project after launch. We offer technical support, iterative improvements as your business grows, and onboarding for new employees.",
+          "p2": "You can scale the system: add modules, integrations, and users without rebuilding the architecture."
+        }
+      },
+      "corporateFaq": [
+        { "q": "How is a corporate app different from a regular website?", "a": "A corporate app is an internal tool for work: task management, documents, employees. A website is a storefront for clients. They are different products with different goals." },
+        { "q": "How long does development take?", "a": "On average 4 to 12 weeks, depending on complexity. Simple systems (tasks, requests) are faster. Complex platforms with integrations take longer." },
+        { "q": "Can it integrate with ERP, CRM, or other systems?", "a": "Yes. We connect any service via API: ERP systems, CRM platforms, Telegram, email, and more." },
+        { "q": "Do I need a dedicated server?", "a": "Not necessarily. We can deploy to the cloud (AWS, Google Cloud, Hetzner) or your own servers — it depends on security requirements and budget." },
+        { "q": "Can the application be extended after launch?", "a": "Of course. The architecture is designed for growth: you can add modules, expand functionality, and connect new integrations." },
+        { "q": "How is data security ensured?", "a": "We use encryption, role-based access control, action logging, and regular backups." },
+        { "q": "Will there be training for employees?", "a": "Yes. We provide training, prepare documentation, and help onboard new users." },
+        { "q": "How much does a corporate application cost?", "a": "Cost depends on the scope of features, number of integrations, and business logic complexity. You can get a preliminary estimate using our calculator." }
+      ],
+      "corporateComparison": {
+        "title": "Custom development or off-the-shelf solution?",
+        "prosLabel": "Pros",
+        "consLabel": "Cons",
+        "custom": {
+          "label": "Custom development",
+          "pros": [
+            "Fully tailored to your processes",
+            "Flexibility and scalability",
+            "No unnecessary features",
+            "Full control over code and data",
+            "Integration with any services"
+          ],
+          "cons": [
+            "Longer development time",
+            "Higher initial investment",
+            "Requires technical support"
+          ]
+        },
+        "offshelf": {
+          "label": "Off-the-shelf solution (SaaS / boxed)",
+          "pros": [
+            "Quick to launch",
+            "Low barrier to entry",
+            "Vendor support included",
+            "Suitable for standard tasks"
+          ],
+          "cons": [
+            "Limited customization",
+            "Vendor dependency",
+            "Monthly fees that grow with scale",
+            "Data stored on third-party servers"
+          ]
+        }
+      },
+      "corporateCalculator": {
+        "title": "Corporate app cost calculator",
+        "appType": "Application type",
+        "appSimple": "Simple system (tasks, requests)",
+        "appMedium": "Medium (CRM, document flow)",
+        "appComplex": "Complex platform (ERP, analytics)",
+        "users": "Number of users",
+        "usersSmall": "Up to 20 people",
+        "usersMedium": "20–100 people",
+        "usersLarge": "More than 100 people",
+        "design": "Interface design",
+        "designStandard": "Standard (UI kit)",
+        "designCustom": "Custom design",
+        "integrations": "Integrations",
+        "integrationsCrm": "CRM (Bitrix24, AmoCRM, etc.)",
+        "integrations1c": "ERP / 1C",
+        "integrationsEmail": "Email and notifications",
+        "integrationsMessenger": "Messengers (Telegram, Slack)",
+        "integrationsPayment": "Payment systems",
+        "integrationsApi": "Third-party APIs",
+        "extra": "Additional features",
+        "extraRoles": "Roles and permissions system",
+        "extraDashboard": "Dashboards and reports",
+        "extraMobile": "Mobile adaptation",
+        "extraAi": "AI features (analysis, recommendations)",
+        "extraNotifications": "Push/email notifications",
+        "timeline": "Timeline",
+        "timelineStandard": "Standard",
+        "timelineUrgent": "Rush development",
+        "total": "Total",
+        "totalNote": "Estimated cost. Exact pricing after discussing your project."
+      }
+    }
+  }
+}

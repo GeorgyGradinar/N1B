@@ -1,0 +1,138 @@
+{
+  "breadcrumbs": {
+    "home": "Home"
+  },
+  "nav": {
+    "services": "Services",
+    "experience": "Experience",
+    "pricing": "Pricing",
+    "faq": "FAQ"
+  },
+  "hero": {
+    "title": "N1B — Full-Cycle IT Solutions",
+    "subtitle": "Development and support of web and mobile applications, cloud infrastructure, and consulting. We deliver projects of any complexity.",
+    "cta": "Discuss your project"
+  },
+  "sections": {
+    "servicesTitle": "Our services",
+    "experienceTitle": "Market experience",
+    "faqTitle": "FAQ",
+    "pricingTitle": "Price calculator"
+  },
+  "pricing": {
+    "plan": "Plan",
+    "planStandard": "Standard",
+    "planPro": "Pro",
+    "audio": "Audio",
+    "withAudio": "With audio",
+    "withoutAudio": "Without audio",
+    "result": "Total",
+    "unit": "units"
+  },
+  "experience": {
+    "lead": "For over {years} we have been helping businesses adopt and grow IT products.",
+    "years": "3 years",
+    "statYears": "years on the market",
+    "statProjects": "projects",
+    "statClients": "clients",
+    "text": "Reliability, transparent processes, and focus on results are what set N1B apart. We work with a modern stack and ensure quality at every stage."
+  },
+  "faq": [
+    { "q": "What services do you offer?", "a": "We cover the full IT cycle: web and mobile development, cloud, DevOps, support, and consulting. We'll find the right format for your needs." },
+    { "q": "How does project work proceed?", "a": "We discuss the scope, agree on deliverables and timeline, assign a team. We work in iterations with regular feedback and demos." },
+    { "q": "What are typical delivery times?", "a": "Depends on scope: from a few weeks for an MVP to months for complex systems. We provide estimates after discussing requirements." },
+    { "q": "How is pricing determined?", "a": "Based on effort, complexity, and timeline. We offer fixed price per phase or time-and-materials — whatever suits the client." },
+    { "q": "What technologies do you use?", "a": "Web: Vue, React, Nuxt, Node. Mobile: React Native, Flutter. Backend and cloud: Node, Python, Go; AWS, GCP, Azure. We choose the stack per project." }
+  ],
+  "footer": {
+    "copy": "© {year} N1B. All types of IT products."
+  },
+  "theme": {
+    "light": "Switch to light theme",
+    "dark": "Switch to dark theme"
+  },
+  "services": {
+    "web": {
+      "title": "Web development",
+      "shortDesc": "Websites, web applications, and portals on modern frameworks.",
+      "detail": "We build web applications of any complexity: from landing pages and corporate sites to SPAs and portals. We use Vue, React, Nuxt, and Next.js on the frontend, Node.js and Python on the backend. Responsive layout, accessibility, and performance are standard for every project."
+    },
+    "mobile": {
+      "title": "Mobile applications",
+      "shortDesc": "iOS and Android: native and cross-platform solutions.",
+      "detail": "We create mobile apps for iOS and Android. We work with native development (Swift, Kotlin) and cross-platform tools (React Native, Flutter). From MVP to full-featured products with API integration, push notifications, and offline support."
+    },
+    "cloud": {
+      "title": "Cloud solutions",
+      "shortDesc": "Deployment, migration, and maintenance in the cloud.",
+      "detail": "We help move and grow infrastructure in the cloud: AWS, Google Cloud, Azure. Server setup, containers (Docker, Kubernetes), databases, and monitoring. Migration of existing systems with minimal downtime and architecture consulting."
+    },
+    "devops": {
+      "title": "DevOps and infrastructure",
+      "shortDesc": "CI/CD, containers, monitoring, and automation.",
+      "detail": "We set up continuous integration and delivery (CI/CD), containerization and orchestration. Deployment automation, monitoring and alerting, infrastructure as code (Terraform, Ansible). We reduce time to release and release risks."
+    },
+    "support": {
+      "title": "Support and evolution",
+      "shortDesc": "Technical support, enhancements, and scaling of existing systems.",
+      "detail": "We take on technical support and evolution of your products: bug fixes, enhancements, dependency updates, and scaling. Flexible engagement: from one-off tasks to a dedicated team. We maintain continuity and documentation."
+    },
+    "consulting": {
+      "title": "Consulting and audit",
+      "shortDesc": "Code and architecture audit, optimization recommendations.",
+      "detail": "We perform code, architecture, and development process audits. We provide recommendations on performance, security, and maintainability. We help choose stack and approaches for new projects and prepare specs for contractors."
+    }
+  },
+  "servicesTree": {
+    "sites": {
+      "title": "Website development",
+      "shortDesc": "We build modern websites that work for your business.",
+      "sub": {
+        "landing": "Landing pages",
+        "corporate": "Corporate sites",
+        "webapp": "Web apps and SaaS",
+        "redesign": "Redesign and updates",
+        "speed": "Speed and SEO optimization",
+        "ai": "AI and automation integration"
+      }
+    },
+    "apps": {
+      "title": "App development",
+      "shortDesc": "We design digital products for growth and scale.",
+      "sub": {
+        "mobile": "Mobile apps (iOS / Android)",
+        "crm": "Dashboards and CRM",
+        "api": "API and third-party integrations",
+        "support": "Support and evolution"
+      }
+    },
+    "optimization": {
+      "title": "Optimization and automation",
+      "shortDesc": "We help businesses run faster and more efficiently.",
+      "sub": {
+        "audit": "Performance audit and improvement",
+        "code": "Code and architecture optimization",
+        "automation": "Process automation",
+        "ai": "AI solutions",
+        "analytics": "Analytics setup"
+      }
+    },
+    "recruitment": {
+      "title": "IT recruitment",
+      "shortDesc": "We strengthen your team with strong developers.",
+      "sub": {
+        "frontend": "Frontend / Backend developers",
+        "devops": "DevOps / QA / UI-UX",
+        "outstaff": "Outstaffing",
+        "project": "Project-based hiring",
+        "assessment": "Technical candidate assessment"
+      }
+    }
+  },
+  "servicePage": {
+    "back": "All services"
+  },
+  "serviceSubPage": {
+    "cta": "We'll discuss your needs and prepare a proposal. Get in touch."
+  }
+}

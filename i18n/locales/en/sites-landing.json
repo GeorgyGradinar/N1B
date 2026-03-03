@@ -1,0 +1,144 @@
+{
+  "servicesTree": {
+    "sites": {
+      "landingContent": {
+        "section1": {
+          "title": "What is a landing page?",
+          "p1": "A landing page is a single-page website created for one specific goal.",
+          "p2": "Simply put: it's a page that persuades a visitor to take one action — submit a request, buy a product, sign up, download, or register.",
+          "p3": "There's nothing extra on a landing page."
+        },
+        "section2": {
+          "title": "What are landing pages used for?",
+          "lead": "Landing pages work great for:",
+          "items": [
+            "Selling one product or service",
+            "Launching a new product",
+            "Testing a business idea",
+            "Collecting leads",
+            "Online courses and webinars",
+            "Ad campaigns (Google / Meta / TikTok)"
+          ],
+          "footer": "If you need results right now — a landing page is the most effective format."
+        },
+        "section3": {
+          "title": "What do you get?",
+          "items": [
+            "A thoughtful structure that drives conversions",
+            "Modern responsive design",
+            "Fast loading speed",
+            "Analytics integration",
+            "CRM and lead form integration",
+            "Ad-ready setup"
+          ]
+        }
+      },
+      "landingFaq": [
+        {
+          "q": "How is a landing page different from a regular website?",
+          "a": "A landing page is a single-page site with one clear goal: a lead, purchase, or sign-up. A regular site can have many pages and sections; a landing page focuses on one action."
+        },
+        {
+          "q": "How long does development take?",
+          "a": "On average, 7 to 14 days. The timeline depends on design complexity, number of sections, and extra features."
+        },
+        {
+          "q": "Is a landing page right for my business?",
+          "a": "If you need to test an idea quickly, run ads, or increase leads — a landing page is a great fit."
+        },
+        {
+          "q": "Do you design from scratch?",
+          "a": "Yes. We can create a custom design or use an optimized template when speed and budget matter."
+        },
+        {
+          "q": "Will the landing page work on mobile?",
+          "a": "Yes. All our landing pages are fully responsive and work correctly on smartphones and tablets."
+        },
+        {
+          "q": "Can you add payment to the site?",
+          "a": "Yes. We integrate online payment, CRM, lead forms, and other integrations you need."
+        },
+        {
+          "q": "Can you help with copy?",
+          "a": "Yes. We can write conversion-focused copy for your landing page."
+        },
+        {
+          "q": "Can the landing page be updated later?",
+          "a": "Of course. You can add new sections, change content, or grow it into a full website."
+        },
+        {
+          "q": "Do you set up analytics and ads?",
+          "a": "Yes. We set up analytics and prepare the landing page for ad campaigns."
+        },
+        {
+          "q": "How much does a landing page cost?",
+          "a": "Cost depends on scope, design, and features. You can get an estimate in our calculator in about a minute."
+        }
+      ],
+      "landingComparison": {
+        "title": "Landing page or multi-page website?",
+        "prosLabel": "Pros",
+        "consLabel": "Cons",
+        "landing": {
+          "label": "Landing page (one-page site)",
+          "pros": [
+            "Quick to launch",
+            "Lower development cost",
+            "High conversion",
+            "Ideal for advertising",
+            "Great for one product or service",
+            "Easy to test hypotheses"
+          ],
+          "cons": [
+            "Suited for one main goal only",
+            "Limited structure",
+            "Not suitable for large product catalogs"
+          ]
+        },
+        "multipage": {
+          "label": "Multi-page website",
+          "pros": [
+            "Suited for larger companies",
+            "Room for lots of content",
+            "Product and service catalogs",
+            "Better for SEO"
+          ],
+          "cons": [
+            "Longer and more expensive to build",
+            "Less focus on a single action",
+            "Harder to run ad campaigns"
+          ]
+        }
+      },
+      "landingCalculator": {
+        "title": "Landing page cost calculator",
+        "designType": "Design type",
+        "designTemplate": "Template-based",
+        "designIndividual": "Custom design",
+        "copywriting": "Need copywriting?",
+        "copyClient": "Client provides copy",
+        "copySales": "Sales copy needed",
+        "extra": "Extra features",
+        "extraCalculator": "On-site calculator",
+        "extraChat": "Live chat",
+        "extraCrm": "CRM integration",
+        "extraPayment": "Payment integration",
+        "extraMultilang": "Multi-language",
+        "extraAi": "AI integration (chatbot, response generation)",
+        "animations": "Design animations",
+        "animNone": "No animations",
+        "animLight": "Light animations",
+        "animAdvanced": "Advanced animations",
+        "timeline": "Timeline",
+        "timelineStandard": "Standard",
+        "timelineUrgent": "Rush development",
+        "analytics": "Ads and analytics",
+        "analyticsGa": "Google Analytics setup",
+        "analyticsPixel": "Facebook Pixel setup",
+        "analyticsAds": "Ad campaign preparation",
+        "total": "Total",
+        "totalNote": "Estimated cost. Exact pricing after discussing your project."
+      }
+    }
+  }
+}
