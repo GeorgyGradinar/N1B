@@ -1,0 +1,145 @@
+{
+  "servicesTree": {
+    "apps": {
+      "supportContent": {
+        "section1": {
+          "title": "Why your product needs ongoing technical support",
+          "p1": "A launched product is never finished. Browsers update, mobile OSes ship new versions, third-party APIs change their contracts, security vulnerabilities surface, and traffic patterns shift. Without dedicated support, these issues accumulate silently until they cause real disruption for users.",
+          "p2": "We provide full-cycle support for web and mobile products: frontend, backend, databases, and infrastructure. One team that knows your codebase, responds fast, and keeps your product stable and evolving."
+        },
+        "section2": {
+          "title": "When does a business need a dedicated support team?",
+          "lead": "A dedicated support retainer makes sense when:",
+          "items": [
+            "You have a live product with real users and zero tolerance for downtime",
+            "Your in-house team is focused on new features and has no bandwidth for maintenance",
+            "You've inherited a codebase and need experienced developers to keep it healthy",
+            "You want guaranteed response times instead of waiting for a freelancer to be available",
+            "You need full-stack coverage — someone who can fix issues front to back without handoffs",
+            "Compliance or security requirements demand regular audits and dependency updates"
+          ],
+          "footer": "If your product is live and generating value, it deserves professional care."
+        },
+        "section3": {
+          "title": "What's included",
+          "items": [
+            "Bug fixes and hotfixes — frontend and backend, same team",
+            "Performance monitoring and bottleneck analysis",
+            "Dependency updates and security patches",
+            "Database query optimization and DBA-level maintenance",
+            "CI/CD pipeline management and deployment support",
+            "Browser and OS compatibility updates",
+            "New feature development within the retainer hours pool",
+            "Monthly status reports with work log and improvement recommendations"
+          ]
+        },
+        "section4": {
+          "title": "How it works",
+          "lead": "Predictable, structured, and transparent:",
+          "items": [
+            "Onboarding — we study your codebase, infrastructure, and architecture. We document findings and define the support scope together. Typical onboarding: 3–5 business days.",
+            "Ticket intake — tasks arrive via your preferred tool: Linear, Jira, Notion, GitHub Issues, or email. We triage, estimate, and confirm priority before work begins.",
+            "Execution — we work from the monthly hours pool with severity-based queuing. Critical issues jump the queue regardless of remaining hours.",
+            "Reporting — monthly summary of completed tasks, hours used, system health observations, and recommendations for the next cycle."
+          ],
+          "footer": "First tasks can start during onboarding — no waiting for the next billing period."
+        },
+        "section5": {
+          "title": "SLA and response times",
+          "p1": "We classify issues by severity: Critical (system down or data loss risk) → 1-hour response; High (key feature broken, revenue impact) → 4-hour response; Medium (degraded experience, workaround available) → 1 business day; Low (minor issues, cosmetic, improvements) → planned in current sprint.",
+          "p2": "Response SLA is guaranteed during business hours (Mon–Fri, 9:00–18:00 GMT+4). Priority and Critical packages include on-call coverage with guaranteed response outside business hours."
+        }
+      },
+      "supportFaq": [
+        {
+          "q": "What counts against the monthly hours?",
+          "a": "All billable development work: bug fixes, feature updates, dependency upgrades, database work, infrastructure changes, and code reviews. Meetings, onboarding, and monthly reporting are not counted against the retainer hours."
+        },
+        {
+          "q": "Do unused hours roll over to the next month?",
+          "a": "Up to 30% of unused hours roll over to the following month. This keeps the retainer predictable for both sides while giving you flexibility for lighter months."
+        },
+        {
+          "q": "Can you support a codebase you didn't build?",
+          "a": "Yes — this is common. We regularly take over existing products, including legacy codebases. Onboarding takes 3–5 days: we review the architecture, set up local environments, document findings, and start work. The first month usually surfaces the most important issues."
+        },
+        {
+          "q": "What technologies do you support?",
+          "a": "Frontend: Vue 3, React, Next.js, Nuxt, TypeScript. Backend: Node.js, Python, Go, PHP (Laravel). Databases: PostgreSQL, MySQL, MongoDB, Redis. Infrastructure: Docker, Kubernetes, AWS, GCP, CI/CD (GitHub Actions, GitLab CI). If you use something not listed, ask — we likely have coverage."
+        },
+        {
+          "q": "How do I submit a task or report a bug?",
+          "a": "Through whichever tool your team already uses: Linear, Jira, GitHub Issues, Notion, or a dedicated Slack channel. We adapt to your workflow, not the other way around."
+        },
+        {
+          "q": "Can feature development be included in the retainer?",
+          "a": "Yes. Once maintenance and support tasks are handled, remaining retainer hours can be used for new feature development. For larger features, we scope them separately upfront to avoid cost uncertainty on both sides."
+        },
+        {
+          "q": "What happens during a critical outage at night or on weekends?",
+          "a": "Priority and Critical packages include on-call coverage with a guaranteed 1-hour response for P1 incidents outside business hours. Standard plans cover business hours only. For teams with 24/7 requirements, we build an escalation path together."
+        },
+        {
+          "q": "Can I change the retainer size over time?",
+          "a": "Yes. You can scale up or down with 30 days notice. Emergency scaling within the same month is also possible — we'll find a solution. We aim for long-term partnerships, not rigid locked-in contracts."
+        }
+      ],
+      "supportComparison": {
+        "title": "Dedicated support team vs. hiring on demand",
+        "prosLabel": "Pros",
+        "consLabel": "Cons",
+        "custom": {
+          "label": "Dedicated support team",
+          "pros": [
+            "Fast response — team already knows the codebase",
+            "Predictable monthly cost",
+            "SLA guarantees and accountability",
+            "Proactive monitoring and recommendations",
+            "Full-stack coverage in one engagement"
+          ],
+          "cons": [
+            "Monthly commitment required",
+            "May be overkill for very infrequent needs"
+          ]
+        },
+        "offshelf": {
+          "label": "On-demand / ad hoc hiring",
+          "pros": [
+            "No ongoing commitment",
+            "Works for genuinely infrequent one-off fixes"
+          ],
+          "cons": [
+            "Slow onboarding every single time",
+            "No SLA — availability is unpredictable",
+            "Higher effective hourly cost",
+            "No knowledge retention between engagements",
+            "High risk during actual emergencies"
+          ]
+        }
+      },
+      "supportCalculator": {
+        "title": "Support retainer cost calculator",
+        "coverage": "Coverage area",
+        "coverageFrontend": "Frontend only",
+        "coverageBackend": "Backend only",
+        "coverageFullstack": "Full-stack (Frontend + Backend)",
+        "hours": "Monthly hours",
+        "hours10": "Up to 10 hours / month",
+        "hours20": "Up to 20 hours / month",
+        "hours40": "Up to 40 hours / month",
+        "sla": "Response SLA",
+        "slaStandard": "Standard (1 business day)",
+        "slaPriority": "Priority (4-hour response)",
+        "slaCritical": "Critical (1-hour response + on-call)",
+        "extras": "Additional services",
+        "extrasDatabase": "Database optimization & DBA tasks",
+        "extrasDevops": "DevOps / infrastructure support",
+        "extrasSecurity": "Security audits & patch management",
+        "extrasReporting": "Monthly detailed reporting",
+        "total": "Estimated monthly cost",
+        "totalPrefix": "from ",
+        "totalNote": "Starting estimate. Exact scope and price confirmed after a brief project review."
+      }
+    }
+  }
+}

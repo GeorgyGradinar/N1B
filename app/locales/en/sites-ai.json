@@ -1,0 +1,122 @@
+{
+  "servicesTree": {
+    "sites": {
+      "aiContent": {
+        "section1": {
+          "title": "What is an AI-powered website?",
+          "p1": "An AI-powered website uses artificial intelligence to automate customer communication, personalize content, and improve user experience.",
+          "p2": "Chatbots, smart search, product recommendations, automatic responses, and content generation - all of this helps reduce workload and increase conversions.",
+          "p3": "Your site starts working 24/7: answers questions, qualifies leads, and guides users to the right actions."
+        },
+        "section2": {
+          "title": "When is AI integration useful?",
+          "lead": "AI on the site is especially effective for:",
+          "items": [
+            "Lead qualification and customer support",
+            "E-commerce and product recommendations",
+            "Booking systems and service selection",
+            "FAQ and knowledge base automation",
+            "Content personalization",
+            "Lead generation forms with smart validation"
+          ],
+          "footer": "AI reduces manual work and speeds up response time - visitors get instant answers."
+        },
+        "section3": {
+          "title": "What do you get?",
+          "items": [
+            "AI chatbot tailored to your business",
+            "Integration with your CRM and base of knowledge",
+            "Recommendation systems and personalization",
+            "Automated lead qualification",
+            "Content generation (descriptions, responses)",
+            "Analytics and continuous improvement"
+          ]
+        }
+      },
+      "aiFaq": [
+        {
+          "q": "What can an AI chatbot on the site do?",
+          "a": "It can answer questions from your knowledge base, qualify leads, book appointments, help with product selection, and transfer complex requests to a human operator."
+        },
+        {
+          "q": "Do I need to have a ready-made site?",
+          "a": "Not necessarily. We can add AI to an existing site or build a new site with AI features from the start."
+        },
+        {
+          "q": "What AI models do you use?",
+          "a": "We work with OpenAI, Claude, and open models. The choice depends on the task, budget, and data privacy requirements."
+        },
+        {
+          "q": "How long does integration take?",
+          "a": "From 1–2 weeks for a simple chatbot to 1–2 months for complex systems with personalization and custom logic."
+        },
+        {
+          "q": "Is my data secure?",
+          "a": "Yes. We configure data handling according to your requirements - you can use your own API keys and keep data on your infrastructure."
+        },
+        {
+          "q": "Can the AI be trained on our products and services?",
+          "a": "Yes. We integrate the chatbot with your knowledge base, catalog, or CRM so it answers based on your data."
+        },
+        {
+          "q": "How much does AI integration cost?",
+          "a": "Depends on scope: chatbot type, integrations, and customization. Use the calculator for an estimate."
+        }
+      ],
+      "aiComparison": {
+        "title": "Traditional site or AI-powered site?",
+        "prosLabel": "Pros",
+        "consLabel": "Cons",
+        "landing": {
+          "label": "Traditional website",
+          "pros": [
+            "Lower initial cost",
+            "Simpler setup",
+            "No API or AI costs",
+            "Familiar to all"
+          ],
+          "cons": [
+            "Manual handling of requests",
+            "Delayed responses",
+            "Limited personalization",
+            "More routine work for staff"
+          ]
+        },
+        "multipage": {
+          "label": "AI-powered website",
+          "pros": [
+            "24/7 automated support",
+            "Instant responses",
+            "Personalization and recommendations",
+            "Lead qualification and routing",
+            "Less routine work",
+            "Scalable without extra staff"
+          ],
+          "cons": [
+            "Higher development cost",
+            "API and hosting costs",
+            "Requires initial setup and training"
+          ]
+        }
+      },
+      "aiCalculator": {
+        "title": "AI integration cost calculator",
+        "baseType": "Base",
+        "baseExisting": "Add to existing site",
+        "baseNew": "New site with AI",
+        "chatbotType": "Chatbot type",
+        "chatbotSimple": "Simple FAQ bot",
+        "chatbotCustom": "Custom AI assistant",
+        "chatbotAdvanced": "Advanced (CRM, personalization)",
+        "extra": "Additional features",
+        "extraKnowledge": "Knowledge base integration",
+        "extraCrm": "CRM integration",
+        "extraRecommendations": "Product recommendations",
+        "extraContentGen": "Content generation",
+        "extraMultilang": "Multi-language",
+        "total": "Total",
+        "totalNote": "Estimated cost. Exact pricing after discussing your project."
+      }
+    }
+  }
+}

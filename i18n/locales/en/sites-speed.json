@@ -1,0 +1,100 @@
+{
+  "servicesTree": {
+    "sites": {
+      "speedContent": {
+        "section1": {
+          "title": "What is performance and SEO optimization?",
+          "p1": "Page load speed and search rankings directly affect conversions and revenue. According to Google, a 1-second delay reduces conversions by 7%, and 53% of users abandon a page that takes more than 3 seconds to load.",
+          "p2": "Performance optimization is a set of technical improvements that speed up page loading, enhance user experience, and boost a site's position in search engines. Google officially includes Core Web Vitals as a ranking factor — a technically weak site loses ground to competitors even with great content."
+        },
+        "section2": {
+          "title": "When does your site need optimization?",
+          "lead": "Check your site if:",
+          "items": [
+            "PageSpeed Insights score is below 70 on mobile",
+            "Pages take more than 3 seconds to load",
+            "Core Web Vitals show yellow or red metrics",
+            "Search rankings are declining or stagnant for no clear reason",
+            "High bounce rate — users leave immediately",
+            "Heavy images, third-party scripts, or outdated plugins are slowing things down",
+            "The site doesn't use caching or a CDN"
+          ],
+          "footer": "If at least two points apply — it's time for an audit."
+        },
+        "section3": {
+          "title": "What's included?",
+          "items": [
+            "Technical speed audit (Lighthouse, PageSpeed, GTmetrix)",
+            "Image optimization and conversion to modern formats (WebP, AVIF)",
+            "Browser and server-side caching setup",
+            "CDN connection and configuration",
+            "CSS, JavaScript, and HTML minification and bundling",
+            "Removing render-blocking resources",
+            "Core Web Vitals improvement: LCP, INP, CLS",
+            "Technical SEO: meta tags, canonical, robots.txt, sitemap",
+            "Before-and-after metrics report"
+          ]
+        },
+        "section4": {
+          "title": "How we work",
+          "p1": "We start with diagnostics: measuring current performance through PageSpeed Insights, Lighthouse, GTmetrix, and Google Search Console. We identify bottlenecks — from heavy images and redundant scripts to server response time issues.",
+          "p2": "Optimization is done in stages, prioritizing the changes that deliver the highest impact. All improvements are verified on real devices and documented in a comparison report.",
+          "p3": "After the work is done, we provide maintenance recommendations and can set up ongoing metrics monitoring if needed."
+        },
+        "section5": {
+          "title": "Tools and technology",
+          "p1": "Google Lighthouse, PageSpeed Insights, GTmetrix, WebPageTest, Screaming Frog, Google Search Console — we use professional tools for precise diagnostics and measurable results.",
+          "p2": "We work with any stack: WordPress, Webflow, Bitrix, and custom projects built on Vue / Nuxt or React / Next.js. No one-size-fits-all approach — only targeted solutions suited to your architecture."
+        }
+      },
+      "speedComparison": {
+        "title": "Which optimization format is right for you?",
+        "subtitle": "Compare the approaches and choose the one that fits your goals.",
+        "featureLabel": "Feature",
+        "columns": ["Speed optimization", "SEO optimization", "Full package"],
+        "features": [
+          { "label": "Core Web Vitals (LCP, INP, CLS)", "values": [true, false, true] },
+          { "label": "Faster page loading", "values": [true, false, true] },
+          { "label": "Higher search rankings", "values": [false, true, true] },
+          { "label": "Technical meta tags & canonical", "values": [false, true, true] },
+          { "label": "Caching and CDN setup", "values": [true, false, true] },
+          { "label": "Image optimization", "values": [true, false, true] },
+          { "label": "Sitemap and robots.txt", "values": [false, true, true] },
+          { "label": "Before/after metrics report", "values": [true, true, true] },
+          { "label": "Long-term sustained impact", "values": [false, false, true] }
+        ]
+      },
+      "speedCalculator": {
+        "title": "Optimization cost calculator",
+        "audit": "Audit type",
+        "auditExpress": "Express audit (PageSpeed + brief report)",
+        "auditFull": "Full speed audit (detailed Lighthouse report)",
+        "auditFullSeo": "Full speed audit + technical SEO audit",
+        "scope": "Optimization scope",
+        "scopeSpeed": "Performance only",
+        "scopeSeo": "Technical SEO only",
+        "scopeBoth": "Performance + SEO (full package)",
+        "extra": "Additional work",
+        "extraCwv": "Core Web Vitals report with recommendations",
+        "extraCdn": "CDN connection and setup",
+        "extraCaching": "Caching configuration",
+        "timeline": "Timeline",
+        "timelineStandard": "Standard (5–14 days)",
+        "timelineUrgent": "Rush (2–4 days)",
+        "total": "Total",
+        "totalPrefix": "from ",
+        "totalNote": "Estimated cost. Exact pricing after technical audit."
+      },
+      "speedFaq": [
+        { "q": "What are Core Web Vitals?", "a": "Core Web Vitals are Google's metrics for measuring user experience: LCP (how fast the main content loads), INP (responsiveness to user interaction), and CLS (visual layout stability). These scores directly affect search rankings." },
+        { "q": "How much can PageSpeed realistically improve?", "a": "In most cases, PageSpeed Score improves by 20–50 points after comprehensive optimization. The exact gain depends on the current state of the site, its architecture, and the technology stack." },
+        { "q": "Does speed affect SEO?", "a": "Yes. Google officially factors Core Web Vitals into rankings. A slow site loses ground to competitors even with equally good content. Speed also affects bounce rate, which indirectly impacts SEO further." },
+        { "q": "Do you only work with WordPress?", "a": "No. We work with any CMS and stack: WordPress, Webflow, Bitrix, and custom projects on Vue / Nuxt or React / Next.js. Tools and approach are tailored to your specific architecture." },
+        { "q": "What's included in a technical SEO audit?", "a": "We check meta tags, headings, canonical tags, robots.txt, sitemaps, structured data, internal linking, broken links, redirects, and page indexing in Google Search Console." },
+        { "q": "How soon will results be visible?", "a": "Technical work takes 3 to 14 days. PageSpeed Score improvements are visible immediately after optimization. Search ranking gains are gradual — typically noticeable 2–6 weeks after technical changes are applied." },
+        { "q": "Does the site design need to change?", "a": "No. Performance and SEO optimization is purely technical work that doesn't affect the visual appearance of your site. We work under the hood." },
+        { "q": "How much does optimization cost?", "a": "Cost depends on the audit type, scope of work, and any add-ons. Use our calculator for an estimate, or contact us for a precise quote." }
+      ]
+    }
+  }
+}

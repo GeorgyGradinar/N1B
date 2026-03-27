@@ -1,0 +1,150 @@
+{
+  "servicesTree": {
+    "apps": {
+      "mobileContent": {
+        "section1": {
+          "title": "Why invest in a mobile app?",
+          "p1": "Mobile is where users spend the most time. A branded app creates a direct channel to your audience — no middlemen, no cost per click. Push notifications, offline support, and deep device integrations deliver an experience that a mobile website simply cannot match.",
+          "p2": "We build mobile apps for iOS and Android: from focused MVPs that validate an idea in weeks, to full-featured platforms with real-time data, payments, maps, and AI."
+        },
+        "section2": {
+          "title": "When does a business need a mobile app?",
+          "lead": "A mobile app makes strategic sense when:",
+          "items": [
+            "You need a direct channel to customers with push notifications and re-engagement",
+            "Your product relies on device features: camera, GPS, NFC, biometrics",
+            "Users return frequently and expect a fast, offline-capable experience",
+            "You're building a marketplace, booking platform, or on-demand service",
+            "You want to reduce support load through self-service features",
+            "Competitors already have an app and it's affecting your retention"
+          ],
+          "footer": "If two or more points apply — a mobile app will give you a measurable competitive edge."
+        },
+        "section3": {
+          "title": "What you get",
+          "items": [
+            "Native iOS (Swift) and/or Android (Kotlin) apps, or cross-platform (Flutter / React Native)",
+            "Backend and REST/GraphQL API, or integration with your existing backend",
+            "App Store and Google Play publishing with full configuration",
+            "Push notifications, in-app messaging, and analytics",
+            "Offline mode and local data sync",
+            "Custom UX/UI design tailored to mobile patterns",
+            "QA testing on real devices (iOS + Android)",
+            "Documentation and post-launch support"
+          ]
+        },
+        "section4": {
+          "title": "How we work",
+          "lead": "We follow a structured, transparent process:",
+          "items": [
+            "Discovery and scoping — we align on goals, user flows, and technical requirements. We help choose the right stack (native vs. cross-platform) based on your use case and budget.",
+            "Design — UX wireframes first, then high-fidelity screens. We design for real device sizes and platform guidelines (iOS Human Interface, Material Design).",
+            "Development — iterative sprints with working builds delivered every 1–2 weeks. You can test on your own device throughout the process.",
+            "QA and release — we test on real iOS and Android devices, handle App Store and Google Play submission, and manage review cycles."
+          ],
+          "footer": "Typical timeline: 8–20 weeks depending on scope. MVPs can launch faster."
+        },
+        "section5": {
+          "title": "Support and evolution",
+          "p1": "After launch we handle OS compatibility updates, bug fixes, and new feature development. Mobile apps need ongoing maintenance — iOS and Android release major OS updates annually that require adaptation.",
+          "p2": "We can work on a retainer for continuous product development, or handle targeted updates as needed. Your app stays stable, compliant, and up to date."
+        }
+      },
+      "mobileFaq": [
+        {
+          "q": "Should I build for iOS first or Android?",
+          "a": "It depends on your audience. In most cases, starting cross-platform (Flutter or React Native) covers both platforms from day one with a single codebase — which is the most cost-effective approach. If your audience is heavily concentrated on one platform, we can prioritize that one."
+        },
+        {
+          "q": "What's the difference between native and cross-platform development?",
+          "a": "Native apps (Swift for iOS, Kotlin for Android) deliver maximum performance and full device API access but require two separate codebases. Cross-platform tools like Flutter and React Native share most of the code between platforms, reducing cost and time while still producing near-native quality. We recommend cross-platform for most business apps; native for high-performance or platform-specific products."
+        },
+        {
+          "q": "How long does mobile app development take?",
+          "a": "A focused MVP typically takes 8–12 weeks. A full-featured app with custom backend, complex logic, and integrations takes 16–24 weeks. The timeline depends heavily on scope, design complexity, and how quickly decisions are made."
+        },
+        {
+          "q": "Do you handle App Store and Google Play publishing?",
+          "a": "Yes. We set up developer accounts (or work with yours), prepare all required assets — screenshots, descriptions, icons — and manage the submission and review process. We have experience resolving App Store review rejections."
+        },
+        {
+          "q": "Do you also build the backend?",
+          "a": "Yes, if needed. We build REST or GraphQL APIs, databases, and admin panels. If you already have a backend, we integrate with it via API. Full-stack delivery is our standard mode."
+        },
+        {
+          "q": "Can the app work without an internet connection?",
+          "a": "Yes. We design offline-first architecture where needed: local storage, background sync, and graceful degradation when connectivity is poor. This is especially important for field service, delivery, and logistics apps."
+        },
+        {
+          "q": "How are app updates delivered to users?",
+          "a": "Updates are published through App Store and Google Play. Critical fixes can be fast-tracked. For React Native and Flutter apps, some changes can be delivered via over-the-air (OTA) updates without going through store review."
+        },
+        {
+          "q": "How much does a mobile app cost?",
+          "a": "Cost depends on the platform (iOS only, Android only, or both), app complexity, and required integrations. Use our calculator for a rough estimate, or contact us for a detailed breakdown."
+        }
+      ],
+      "mobileComparison": {
+        "title": "Native development or cross-platform?",
+        "prosLabel": "Pros",
+        "consLabel": "Cons",
+        "custom": {
+          "label": "Native (Swift / Kotlin)",
+          "pros": [
+            "Maximum performance",
+            "Full access to all device APIs",
+            "Best compliance with platform UX patterns",
+            "Ideal for complex animations and hardware features"
+          ],
+          "cons": [
+            "Two separate codebases (iOS + Android)",
+            "Higher cost and longer timeline",
+            "Requires two teams or sequential development"
+          ]
+        },
+        "offshelf": {
+          "label": "Cross-platform (Flutter / React Native)",
+          "pros": [
+            "Single codebase for iOS and Android",
+            "Faster development and lower cost",
+            "Near-native quality in most use cases",
+            "OTA updates possible (React Native)"
+          ],
+          "cons": [
+            "Some platform-specific APIs need extra bridging",
+            "Heavier runtime overhead (Flutter)",
+            "Occasional platform-specific edge case bugs"
+          ]
+        }
+      },
+      "mobileCalculator": {
+        "title": "Mobile app cost calculator",
+        "platform": "Platform",
+        "platformCross": "iOS + Android (cross-platform)",
+        "platformIos": "iOS only",
+        "platformAndroid": "Android only",
+        "platformBoth": "iOS + Android (native each)",
+        "complexity": "App complexity",
+        "complexitySimple": "Simple (catalog, MVP, informational)",
+        "complexityMedium": "Medium (auth, API, push, profiles)",
+        "complexityComplex": "Complex (real-time, payments, maps, AI)",
+        "design": "Design",
+        "designStandard": "Standard (UI kit, platform guidelines)",
+        "designCustom": "Custom design (unique screens, animations)",
+        "integrations": "Integrations & backend",
+        "integrationsPayment": "In-app payments (Stripe, PayPal, etc.)",
+        "integrationsAnalytics": "Analytics (Firebase, Mixpanel)",
+        "integrationsSocial": "Social auth (Google, Apple, Facebook)",
+        "integrationsBackendNew": "Backend development from scratch (API + DB)",
+        "integrationsBackendAdmin": "Admin panel",
+        "integrationsBackendRealtime": "Real-time features (live updates, WebSocket)",
+        "timeline": "Timeline",
+        "timelineStandard": "Standard",
+        "timelineUrgent": "Rush delivery",
+        "total": "Total",
+        "totalPrefix": "from ",
+        "totalNote": "Starting price estimate. Exact cost after project scoping."
+      }
+    }
+  }
+}
