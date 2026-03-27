@@ -4,7 +4,7 @@
       "redesignContent": {
         "section1": {
           "title": "What is website redesign?",
-          "p1": "Redesign is the process of updating an existing website: visual style, structure, usability, and technology. It's not just about making it prettier — it's rebuilding the product to match current business goals and user behavior.",
+          "p1": "Redesign is the process of updating an existing website: visual style, structure, usability, and technology. It's not just about making it prettier - it's rebuilding the product to match current business goals and user behavior.",
           "p2": "An outdated site loses trust, performs poorly on mobile, loads slowly, and fails to generate leads. A redesign addresses these issues systematically."
         },
         "section2": {
@@ -14,12 +14,12 @@
             "Your site is 3–4+ years old and looks outdated",
             "Conversions have dropped or you're getting fewer leads",
             "The site doesn't display well on mobile devices",
-            "Slow loading — users leave before the page appears",
+            "Slow loading - users leave before the page appears",
             "Your services, positioning, or target audience have changed",
             "The site is difficult to edit or update",
             "Competitors look more modern and professional"
           ],
-          "footer": "If at least two points apply — it's time for a refresh."
+          "footer": "If at least two points apply - it's time for a refresh."
         },
         "section3": {
           "title": "What do you get?",
@@ -41,50 +41,33 @@
         },
         "section5": {
           "title": "Technology",
-          "p1": "We use a modern stack: Vue / Nuxt, React, Next.js, WordPress, Webflow — the choice depends on the task and project scope.",
+          "p1": "We use a modern stack: Vue / Nuxt, React, Next.js, WordPress, Webflow - the choice depends on the task and project scope.",
           "p2": "All sites are optimized for Core Web Vitals, mobile-ready, and prepared for marketing."
         }
       },
       "redesignComparison": {
-        "title": "Full redesign or incremental improvements?",
-        "prosLabel": "Pros",
-        "consLabel": "Cons",
-        "full": {
-          "label": "Full redesign",
-          "pros": [
-            "Modern look and UX",
-            "New technology platform",
-            "Improved speed and SEO",
-            "Aligned with current business goals",
-            "Long-lasting results"
-          ],
-          "cons": [
-            "More time and budget required",
-            "Content migration needed",
-            "Temporary user adjustment period"
-          ]
-        },
-        "partial": {
-          "label": "Incremental improvements",
-          "pros": [
-            "Faster and cheaper",
-            "Minimal impact on current site operations",
-            "Can be implemented gradually",
-            "Users keep a familiar interface"
-          ],
-          "cons": [
-            "Doesn't solve systemic issues",
-            "Technical debt remains",
-            "Less noticeable results",
-            "May require another overhaul later"
-          ]
-        }
+        "title": "How do the approaches compare?",
+        "subtitle": "Choose the format that fits your goal and budget.",
+        "featureLabel": "Feature",
+        "columns": ["Full redesign", "Incremental improvements", "Rebuild from scratch"],
+        "features": [
+          { "label": "Modern look & UX", "values": [true, false, true] },
+          { "label": "New technology platform", "values": [false, false, true] },
+          { "label": "Improved speed & SEO", "values": [true, false, true] },
+          { "label": "Existing content preserved", "values": [true, true, false] },
+          { "label": "Minimal cost & time", "values": [false, true, false] },
+          { "label": "Gradual implementation", "values": [false, true, false] },
+          { "label": "Long-lasting results", "values": [true, false, true] },
+          { "label": "SEO rankings preserved", "values": [true, true, false] },
+          { "label": "Aligned with new business goals", "values": [true, false, true] },
+          { "label": "Minimal risk to live site", "values": [false, true, false] }
+        ]
       },
       "redesignCalculator": {
         "title": "Redesign cost calculator",
         "scope": "Scope of work",
-        "scopeVisual": "Visual refresh (design + layout)",
-        "scopeFull": "Full redesign (design + structure + development)",
+        "scopeVisual": "Visual refresh (design without changing structure)",
+        "scopeFull": "Full redesign (design + structure update)",
         "scopeRebuild": "Rebuild from scratch (new platform)",
         "pages": "Number of pages",
         "pagesSmall": "Up to 5 pages",
@@ -94,23 +77,37 @@
         "designStandard": "Standard (UI kit)",
         "designCustom": "Custom design",
         "extra": "Additional work",
+        "extraImplementation": "Design implementation",
         "extraMigration": "Content migration",
         "extraSeo": "SEO preservation",
         "extraMobile": "Mobile optimization",
         "extraSpeed": "Speed optimization",
         "extraAnalytics": "Analytics setup",
-        "extraCrm": "CRM integration",
-        "extraMultilang": "Multi-language support",
+        "languages": "Additional languages (from 150 per language)",
+        "showMoreLanguages": "Show more",
+        "showLessLanguages": "Show less",
+        "langRu": "Russian",
+        "langEn": "English",
+        "langKa": "Georgian",
+        "langDe": "German",
+        "langFr": "French",
+        "langEs": "Spanish",
+        "langIt": "Italian",
+        "langAr": "Arabic",
+        "langZh": "Chinese",
+        "langTr": "Turkish",
+        "langUk": "Ukrainian",
         "timeline": "Timeline",
         "timelineStandard": "Standard",
         "timelineUrgent": "Rush development",
         "total": "Total",
+        "totalPrefix": "from ",
         "totalNote": "Estimated cost. Exact pricing after discussing your project."
       },
       "redesignFaq": [
-        { "q": "How is a redesign different from building a site from scratch?", "a": "A redesign builds on your existing site: we keep what works — content, SEO rankings, and functional elements — while updating the look, structure, and technology. It's faster and more affordable than starting from zero." },
+        { "q": "How is a redesign different from building a site from scratch?", "a": "A redesign builds on your existing site: we keep what works - content, SEO rankings, and functional elements - while updating the look, structure, and technology. It's faster and more affordable than starting from zero." },
         { "q": "How long does a redesign take?", "a": "On average 2 to 6 weeks. A visual refresh is quicker; a full rebuild with migration takes longer." },
-        { "q": "Will I lose my search rankings?", "a": "No, if done correctly. We set up redirects, preserve URL structure, and optimize technical SEO parameters." },
+        { "q": "Will I lose my search rankings?", "a": "No. We only change the visual part - for search engines the site remains unchanged, so your rankings are preserved." },
         { "q": "Do I need to rewrite all the content?", "a": "Not necessarily. We can migrate existing content, but we recommend updating copy if it's outdated or no longer matches your positioning." },
         { "q": "Can you update only the design without changing the platform?", "a": "Yes. We can refresh the visual layer while keeping your current CMS or framework. However, if the platform is outdated, we recommend a full rebuild." },
         { "q": "What happens to the old site during the process?", "a": "Your old site continues to work. We develop the new version in parallel and switch over only when everything is ready." },

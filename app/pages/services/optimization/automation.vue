@@ -27,7 +27,7 @@ const breadcrumbItems = computed(() => [
   { label: t('servicesTree.optimization.sub.automation') }
 ])
 const pageTitle = computed(() => t('servicesTree.optimization.sub.automation'))
-useHead({ title: () => `${pageTitle.value} — N1B`, meta: [{ name: 'description', content: () => pageTitle.value }] })
+useHead({ title: () => `${pageTitle.value} - N1B`, meta: [{ name: 'description', content: () => pageTitle.value }] })
 </script>
 
 <style scoped>

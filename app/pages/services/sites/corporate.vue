@@ -161,7 +161,7 @@ const totalFormatted = computed(() =>
 const pageTitle = computed(() => t('servicesTree.sites.sub.corporate'))
 
 useHead({
-  title: () => `${pageTitle.value} — N1B`,
+  title: () => `${pageTitle.value} - N1B`,
   meta: [{ name: 'description', content: () => pageTitle.value }]
 })
 </script>

@@ -25,40 +25,49 @@
 
       <section v-if="comparison" class="comparison" aria-labelledby="comparison-title">
         <h2 id="comparison-title" class="comparison-title">{{ comparison.title }}</h2>
+        <p v-if="comparison.subtitle" class="comparison-subtitle">{{ comparison.subtitle }}</p>
         <div class="comparison-table-wrap">
-          <table class="comparison-table">
+          <table class="comparison-table" role="table">
             <thead>
               <tr>
-                <th scope="col"></th>
-                <th scope="col">{{ comparison.full.label }}</th>
-                <th scope="col">{{ comparison.partial.label }}</th>
+                <th scope="col" class="comparison-th comparison-th--feature">{{ comparison.featureLabel }}</th>
+                <th
+                  v-for="(col, ci) in comparison.columns"
+                  :key="ci"
+                  scope="col"
+                  class="comparison-th"
+                  :class="{ 'comparison-th--highlight': ci === 0 }"
+                >
+                  {{ col }}
+                </th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row" class="comparison-row-label">{{ comparison.prosLabel }}</th>
-                <td>
-                  <ul class="comparison-cell-list comparison-cell-list--pros" role="list">
-                    <li v-for="(item, i) in comparison.full.pros" :key="'f-p-' + i">{{ item }}</li>
-                  </ul>
-                </td>
-                <td>
-                  <ul class="comparison-cell-list comparison-cell-list--pros" role="list">
-                    <li v-for="(item, i) in comparison.partial.pros" :key="'p-p-' + i">{{ item }}</li>
-                  </ul>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row" class="comparison-row-label">{{ comparison.consLabel }}</th>
-                <td>
-                  <ul class="comparison-cell-list comparison-cell-list--cons" role="list">
-                    <li v-for="(item, i) in comparison.full.cons" :key="'f-c-' + i">{{ item }}</li>
-                  </ul>
-                </td>
-                <td>
-                  <ul class="comparison-cell-list comparison-cell-list--cons" role="list">
-                    <li v-for="(item, i) in comparison.partial.cons" :key="'p-c-' + i">{{ item }}</li>
-                  </ul>
+              <tr
+                v-for="(feature, fi) in comparison.features"
+                :key="fi"
+                class="comparison-row"
+                :class="{ 'comparison-row--odd': fi % 2 !== 0 }"
+              >
+                <td class="comparison-td comparison-td--label">{{ feature.label }}</td>
+                <td
+                  v-for="(val, vi) in feature.values"
+                  :key="vi"
+                  class="comparison-td comparison-td--val"
+                  :class="{ 'comparison-td--highlight': vi === 0 }"
+                >
+                  <span v-if="val" class="comparison-check" aria-label="Да">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                      <circle cx="9" cy="9" r="9" fill="currentColor" fill-opacity="0.15"/>
+                      <path d="M5 9l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                  <span v-else class="comparison-cross" aria-label="Нет">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                      <circle cx="9" cy="9" r="9" fill="currentColor" fill-opacity="0.12"/>
+                      <path d="M6 6l6 6M12 6l-6 6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
+                    </svg>
+                  </span>
                 </td>
               </tr>
             </tbody>
@@ -70,7 +79,30 @@
         <h2 id="calculator-title" class="calculator-title">{{ calcLabels.title }}</h2>
         <div v-for="group in calcConfig.groups" :key="group.id" class="calculator-group">
           <p class="calculator-group-label">{{ calcLabels[group.labelKey] }}</p>
+          <template v-if="group.id === 'languages'">
+            <div class="calculator-options calculator-options--checkboxes">
+              <label v-for="opt in visibleLanguageOptions" :key="opt.value" class="calculator-option">
+                <input v-model="calc[group.id]" type="checkbox" :value="opt.value" />
+                <span>{{ calcLabels[opt.labelKey] }}</span>
+              </label>
+            </div>
+            <button
+              v-if="moreLanguageOptions.length"
+              type="button"
+              class="calculator-show-more"
+              @click="showMoreLanguages = !showMoreLanguages"
+            >
+              {{ showMoreLanguages ? calcLabels.showLessLanguages : calcLabels.showMoreLanguages }}
+            </button>
+            <div v-show="showMoreLanguages" class="calculator-options calculator-options--checkboxes calculator-options--more">
+              <label v-for="opt in moreLanguageOptions" :key="opt.value" class="calculator-option">
+                <input v-model="calc[group.id]" type="checkbox" :value="opt.value" />
+                <span>{{ calcLabels[opt.labelKey] }}</span>
+              </label>
+            </div>
+          </template>
           <div
+            v-else
             class="calculator-options"
             :class="{ 'calculator-options--checkboxes': group.type === 'checkbox' }"
           >
@@ -82,7 +114,7 @@
         </div>
         <div class="calculator-total">
           <p class="calculator-total-label">{{ calcLabels.total }}</p>
-          <p class="calculator-total-value">{{ totalFormatted }}</p>
+          <p class="calculator-total-value">{{ calcLabels.totalPrefix }}{{ totalFormatted }}</p>
           <p class="calculator-total-note">{{ calcLabels.totalNote }}</p>
         </div>
       </aside>
@@ -112,7 +144,7 @@ const content = computed(() => {
 
 const comparison = computed(() => {
   const data = get('servicesTree.sites.redesignComparison')
-  return data?.full && data?.partial ? data : null
+  return data?.features && Array.isArray(data.features) ? data : null
 })
 
 const faqItems = computed(() => {
@@ -121,6 +153,12 @@ const faqItems = computed(() => {
 })
 
 const calcLabels = computed(() => get('servicesTree.sites.redesignCalculator') || {})
+
+const LANGUAGES_VISIBLE = 4
+const showMoreLanguages = ref(false)
+const languagesGroup = computed(() => calcConfig.groups.find((g) => g.id === 'languages'))
+const visibleLanguageOptions = computed(() => (languagesGroup.value ? languagesGroup.value.options.slice(0, LANGUAGES_VISIBLE) : []))
+const moreLanguageOptions = computed(() => (languagesGroup.value ? languagesGroup.value.options.slice(LANGUAGES_VISIBLE) : []))
 
 function getInitialCalcState () {
   const state: Record<string, string | string[]> = {}
@@ -155,13 +193,13 @@ const total = computed(() => {
 })
 
 const totalFormatted = computed(() =>
-  new Intl.NumberFormat('ka-GE', { style: 'currency', currency: 'GEL', maximumFractionDigits: 0 }).format(total.value)
+  new Intl.NumberFormat('ka-GE', { maximumFractionDigits: 0 }).format(total.value) + ' GEL'
 )
 
 const pageTitle = computed(() => t('servicesTree.sites.sub.redesign'))
 
 useHead({
-  title: () => `${pageTitle.value} — N1B`,
+  title: () => `${pageTitle.value} - N1B`,
   meta: [{ name: 'description', content: () => pageTitle.value }]
 })
 </script>
@@ -187,26 +225,112 @@ useHead({
 .content-list li { margin-bottom: 0.35rem; }
 .content-footer { font-weight: 500; color: var(--color-text); }
 .comparison { margin-top: 2.5rem; }
-.comparison-title { font-size: 1.25rem; font-weight: 600; margin: 0 0 1.25rem; color: var(--color-text); }
-.comparison-table-wrap { overflow-x: auto; border: 1px solid var(--color-card-border, #e5e5e5); border-radius: 12px; background: var(--color-bg-alt, #f5f5f5); }
-.comparison-table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
-.comparison-table th, .comparison-table td { padding: 1rem 1.25rem; text-align: left; vertical-align: top; border-bottom: 1px solid var(--color-card-border, #e5e5e5); }
-.comparison-table thead th { font-weight: 600; color: var(--color-text); background: var(--color-card-bg, #fff); }
-.comparison-table thead th:first-child { width: 0; padding: 0; border: none; }
-.comparison-table tbody tr:last-child th, .comparison-table tbody tr:last-child td { border-bottom: none; }
-.comparison-row-label { font-weight: 600; color: var(--color-text); white-space: nowrap; min-width: 5rem; }
-.comparison-cell-list { list-style: none; margin: 0; padding: 0; line-height: 1.55; color: var(--color-text-muted); }
-.comparison-cell-list li { position: relative; padding-left: 1.35rem; margin-bottom: 0.4rem; }
-.comparison-cell-list li:last-child { margin-bottom: 0; }
-.comparison-cell-list--pros li::before { content: '✓'; position: absolute; left: 0; color: var(--color-accent, #2563eb); font-weight: 600; }
-.comparison-cell-list--cons li::before { content: '⚠'; position: absolute; left: 0; color: var(--color-text-muted); }
-@media (max-width: 640px) { .comparison-table th, .comparison-table td { padding: 0.75rem 1rem; font-size: 0.9rem; } }
+.comparison-title { font-size: 1.25rem; font-weight: 700; margin: 0 0 0.5rem; color: var(--color-text); }
+.comparison-subtitle { font-size: 0.9rem; color: var(--color-text-muted); margin: 0 0 1.5rem; }
+
+.comparison-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--color-card-border);
+  border-radius: 14px;
+  background: var(--color-card-bg);
+  box-shadow: var(--shadow-card);
+}
+
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+/* Header */
+.comparison-th {
+  padding: 1rem 1.25rem;
+  font-weight: 600;
+  font-size: 0.82rem;
+  text-align: center;
+  color: var(--color-text-muted);
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-card-border);
+  white-space: nowrap;
+  letter-spacing: 0.01em;
+}
+
+.comparison-th--feature {
+  text-align: left;
+  width: 38%;
+  color: var(--color-text-muted);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+.comparison-th--highlight {
+  color: var(--color-accent);
+  background: var(--color-tag-bg);
+  border-left: 2px solid var(--color-accent);
+  border-right: 2px solid var(--color-accent);
+}
+
+/* Rows */
+.comparison-row:last-child .comparison-td {
+  border-bottom: none;
+}
+
+.comparison-td {
+  padding: 0.85rem 1.25rem;
+  border-bottom: 1px solid var(--color-card-border);
+  vertical-align: middle;
+  color: var(--color-text-muted);
+}
+
+.comparison-td--label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.comparison-td--val {
+  text-align: center;
+}
+
+.comparison-td--highlight {
+  background: var(--color-tag-bg);
+  border-left: 2px solid var(--color-accent);
+  border-right: 2px solid var(--color-accent);
+}
+
+.comparison-row--odd .comparison-td {
+  background: var(--color-bg);
+}
+
+.comparison-row--odd .comparison-td--highlight {
+  background: color-mix(in srgb, var(--color-tag-bg) 80%, var(--color-bg) 20%);
+}
+
+/* Check / Cross icons */
+.comparison-check {
+  display: inline-flex;
+  color: #16a34a;
+}
+
+.comparison-cross {
+  display: inline-flex;
+  color: #dc2626;
+}
+
+@media (max-width: 640px) {
+  .comparison-th, .comparison-td { padding: 0.65rem 0.75rem; font-size: 0.82rem; }
+  .comparison-th--feature, .comparison-td--label { font-size: 0.8rem; }
+}
 .calculator { margin-top: 3rem; padding: 2rem; background: var(--color-bg-alt, #f5f5f5); border: 1px solid var(--color-card-border, #e5e5e5); border-radius: 12px; }
 .calculator-title { font-size: 1.5rem; font-weight: 700; margin: 0 0 1.5rem; color: var(--color-text); }
 .calculator-group { margin-bottom: 1.5rem; }
 .calculator-group-label { font-size: 0.95rem; font-weight: 600; margin: 0 0 0.5rem; color: var(--color-text); }
 .calculator-options { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; }
 .calculator-options--checkboxes { flex-direction: column; gap: 0.4rem; }
+.calculator-options--more { margin-top: 0.5rem; }
+.calculator-show-more { margin-top: 0.5rem; padding: 0.35rem 0; font-size: 0.9rem; color: var(--color-accent, #2563eb); background: none; border: none; cursor: pointer; text-decoration: underline; }
+.calculator-show-more:hover { color: var(--color-accent-hover, #1d4ed8); }
 .calculator-option { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.95rem; color: var(--color-text-muted); cursor: pointer; }
 .calculator-option input { width: 1.1rem; height: 1.1rem; accent-color: var(--color-accent, #2563eb); }
 .calculator-option:has(input:checked) { color: var(--color-text); font-weight: 500; }

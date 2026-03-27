@@ -19,7 +19,7 @@
             "You need real-time data processing",
             "You want to automate processes and scale your business"
           ],
-          "footer": "If your idea goes beyond a brochure website — you need a web application."
+          "footer": "If your idea goes beyond a brochure website - you need a web application."
         },
         "section3": {
           "title": "What do you get?",
@@ -36,17 +36,12 @@
           "title": "Development stages",
           "lead": "We work step by step:",
           "items": [
-            "Analysis and design — we study the problem, define features, design architecture and user flows.",
-            "Interface design — we create prototypes and UI focused on usability and conversion.",
-            "Development — we build frontend and backend, connect databases, APIs, and integrations.",
-            "Testing and launch — QA testing, load testing, and production deployment.",
-            "Support — monitoring, iteration, and scaling as you grow."
+            "Analysis and design - we study the problem, define features, design architecture and user flows.",
+            "Interface design - we create prototypes and UI focused on usability and conversion.",
+            "Development - we build frontend and backend, connect databases, APIs, and integrations.",
+            "Testing and launch - QA testing, load testing, and production deployment.",
+            "Support - monitoring, iteration, and scaling as you grow."
           ]
-        },
-        "section5": {
-          "title": "Technology",
-          "p1": "We use a modern stack: Vue / Nuxt, React / Next.js, Node.js, PostgreSQL, Redis, Docker, Kubernetes. The choice depends on project requirements.",
-          "p2": "For SaaS products we apply multi-tenant architecture, task queues, caching, and CDN for maximum performance."
         },
         "section6": {
           "title": "Security and reliability",
@@ -56,7 +51,8 @@
         "section7": {
           "title": "Support and evolution",
           "p1": "After launch we continue to support the project: fix bugs, add new features, and optimize performance.",
-          "p2": "You can scale the application, connect new modules and integrations without rewriting code."
+          "p2": "You can scale the application, connect new modules and integrations without rewriting code.",
+          "p3": "At the client's request, we can continue to support the project under a separate agreement after the main development is complete."
         }
       },
       "webappFaq": [
@@ -70,7 +66,7 @@
         },
         {
           "q": "What is SaaS and is it right for me?",
-          "a": "SaaS (Software as a Service) is a model where users pay for access to your application via subscription. If your product solves a recurring problem for many clients — SaaS is a great fit."
+          "a": "SaaS (Software as a Service) is a model where users pay for access to your application via subscription. If your product solves a recurring problem for many clients - SaaS is a great fit."
         },
         {
           "q": "Can I start with an MVP?",

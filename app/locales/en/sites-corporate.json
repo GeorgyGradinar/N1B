@@ -17,7 +17,7 @@
             "Access control is required: different roles, departments, permission levels",
             "You need to consolidate multiple tools into one platform"
           ],
-          "footer": "If at least two points apply — a corporate application will solve your challenge."
+          "footer": "If at least two points apply - a corporate application will solve your challenge."
         },
         "section3": {
           "title": "What do you get?",
@@ -34,20 +34,10 @@
           "title": "How we build it",
           "lead": "We offer two approaches:",
           "items": [
-            "Analysis of your current structure and processes — we look at how work is organized, find bottlenecks and automation opportunities, then design and build a web application to optimize those processes.",
-            "Build to a specific request — if you already have a clear brief or task description, we create a web application to your requirements without a prior analysis phase."
+            "Analysis of your current structure and processes - we look at how work is organized, find bottlenecks and automation opportunities, then design and build a web application to optimize those processes.",
+            "Build to a specific request - if you already have a clear brief or task description, we create a web application to your requirements without a prior analysis phase."
           ],
           "footer": "In both cases you get a working application that fits your environment and is ready to evolve."
-        },
-        "section5": {
-          "title": "How we work",
-          "p1": "We start by defining the goal and format: whether you need process analysis or you come with a ready request. Then we agree on scope, timeline, and priorities.",
-          "p2": "We develop in iterations: you see progress at each stage and can adjust direction. After launch we help with refinements, user training, and support."
-        },
-        "section6": {
-          "title": "Technology",
-          "p1": "We use a modern stack: Vue / Nuxt, React, Node.js, PostgreSQL, Docker. The choice depends on the task — we pick what fits your project best.",
-          "p2": "All applications are deployed to the cloud or your own servers, with automated deployment and monitoring."
         },
         "section7": {
           "title": "Support and evolution",
@@ -59,7 +49,7 @@
         { "q": "How is a corporate app different from a regular website?", "a": "A corporate app is an internal tool for work: task management, documents, employees. A website is a storefront for clients. They are different products with different goals." },
         { "q": "How long does development take?", "a": "On average 4 to 12 weeks, depending on complexity. Simple systems (tasks, requests) are faster. Complex platforms with integrations take longer." },
         { "q": "Can it integrate with ERP, CRM, or other systems?", "a": "Yes. We connect any service via API: ERP systems, CRM platforms, Telegram, email, and more." },
-        { "q": "Do I need a dedicated server?", "a": "Not necessarily. We can deploy to the cloud (AWS, Google Cloud, Hetzner) or your own servers — it depends on security requirements and budget." },
+        { "q": "Do I need a dedicated server?", "a": "Not necessarily. We can deploy to the cloud (AWS, Google Cloud, Hetzner) or your own servers - it depends on security requirements and budget." },
         { "q": "Can the application be extended after launch?", "a": "Of course. The architecture is designed for growth: you can add modules, expand functionality, and connect new integrations." },
         { "q": "How is data security ensured?", "a": "We use encryption, role-based access control, action logging, and regular backups." },
         { "q": "Will there be training for employees?", "a": "Yes. We provide training, prepare documentation, and help onboard new users." },

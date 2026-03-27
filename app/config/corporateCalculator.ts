@@ -14,16 +14,6 @@ export const corporateCalculatorConfig = {
       ]
     },
     {
-      id: 'users',
-      type: 'radio',
-      labelKey: 'users',
-      options: [
-        { value: 'usersSmall', labelKey: 'usersSmall', price: 0 },
-        { value: 'usersMedium', labelKey: 'usersMedium', price: 500 },
-        { value: 'usersLarge', labelKey: 'usersLarge', price: 1200 }
-      ]
-    },
-    {
       id: 'design',
       type: 'radio',
       labelKey: 'design',

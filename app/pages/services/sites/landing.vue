@@ -20,6 +20,8 @@
             <p v-if="section.footer" class="content-footer">{{ section.footer }}</p>
           </section>
           <p class="article-cta">{{ t('serviceSubPage.cta') }}</p>
+          <p class="article-cta-sub">{{ t('serviceSubPage.calcPromoTitle') }}</p>
+          <a href="#calculator" class="article-cta-btn">{{ t('serviceSubPage.ctaBtn') }}</a>
         </div>
       </article>
 
@@ -66,7 +68,7 @@
         </div>
       </section>
 
-      <aside class="calculator" aria-labelledby="calculator-title">
+      <aside id="calculator" class="calculator" aria-labelledby="calculator-title">
         <h2 id="calculator-title" class="calculator-title">{{ calcLabels.title }}</h2>
         <div v-for="group in calcConfig.groups" :key="group.id" class="calculator-group">
           <p class="calculator-group-label">{{ calcLabels[group.labelKey] }}</p>
@@ -77,6 +79,16 @@
             <label v-for="opt in group.options" :key="opt.value" class="calculator-option">
               <input v-model="calc[group.id]" :type="group.type" :value="opt.value" />
               <span>{{ calcLabels[opt.labelKey] }}</span>
+              <span
+                v-if="opt.tooltipKey && calcLabels[opt.tooltipKey]"
+                class="calculator-tooltip"
+                :aria-label="calcLabels[opt.tooltipKey]"
+                tabindex="0"
+                @click.stop.prevent
+              >
+                <span class="calculator-tooltip-icon" aria-hidden="true">ⓘ</span>
+                <span class="calculator-tooltip-text">{{ calcLabels[opt.tooltipKey] }}</span>
+              </span>
             </label>
           </div>
         </div>
@@ -140,18 +152,23 @@ function getOptionMultiplier (group: CalculatorGroup, value: string): number {
 
 const total = computed(() => {
   let sum = calcConfig.basePrice
+  let urgentPrice = 0
   let multiplier = 1
   for (const group of calcConfig.groups) {
     const selected = calc[group.id]
     if (group.type === 'radio' && typeof selected === 'string') {
-      sum += getOptionPrice(group, selected)
       const m = getOptionMultiplier(group, selected)
-      if (m !== 1) multiplier = m
+      if (m !== 1) {
+        urgentPrice = getOptionPrice(group, selected)
+        multiplier = m
+      } else {
+        sum += getOptionPrice(group, selected)
+      }
     } else if (group.type === 'checkbox' && Array.isArray(selected)) {
       for (const v of selected) sum += getOptionPrice(group, v)
     }
   }
-  return Math.round(sum * multiplier)
+  return Math.round(sum * multiplier + urgentPrice)
 })
 
 const totalFormatted = computed(() =>
@@ -161,7 +178,7 @@ const totalFormatted = computed(() =>
 const pageTitle = computed(() => t('servicesTree.sites.sub.landing'))
 
 useHead({
-  title: () => `${pageTitle.value} — N1B`,
+  title: () => `${pageTitle.value} - N1B`,
   meta: [{ name: 'description', content: () => pageTitle.value }]
 })
 </script>
@@ -178,6 +195,9 @@ useHead({
 .article-body { font-size: 1.0625rem; line-height: 1.7; color: var(--color-text-muted); }
 .article-body p { margin: 0 0 1rem; }
 .article-cta { margin-top: 1.5rem; font-weight: 500; color: var(--color-text); }
+.article-cta-sub { margin: 1rem 0 0.5rem; font-size: 1.1rem; font-weight: 700; color: var(--color-text); }
+.article-cta-btn { display: inline-block; margin-top: 1rem; padding: 0.65rem 1.4rem; background: var(--color-accent, #2563eb); color: #fff; font-weight: 600; font-size: 0.95rem; border-radius: 8px; text-decoration: none; transition: opacity 0.15s; }
+.article-cta-btn:hover { opacity: 0.85; }
 .content-section { margin-bottom: 2rem; }
 .content-section:last-of-type { margin-bottom: 1rem; }
 .content-section-title { font-size: 1.25rem; font-weight: 600; margin: 0 0 0.75rem; color: var(--color-text); }
@@ -210,6 +230,24 @@ useHead({
 .calculator-option { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.95rem; color: var(--color-text-muted); cursor: pointer; }
 .calculator-option input { width: 1.1rem; height: 1.1rem; accent-color: var(--color-accent, #2563eb); }
 .calculator-option:has(input:checked) { color: var(--color-text); font-weight: 500; }
+.calculator-tooltip { position: relative; display: inline-flex; }
+.calculator-tooltip-icon { font-size: 0.85rem; color: var(--color-text-muted); opacity: 0.7; cursor: help; }
+.calculator-tooltip:hover .calculator-tooltip-icon { opacity: 1; }
+.calculator-tooltip-text {
+  visibility: hidden; opacity: 0;
+  position: absolute; left: 50%; transform: translateX(-50%); bottom: 100%; margin-bottom: 0.35rem;
+  background: var(--color-text); color: var(--color-bg, #fff);
+  font-size: 0.8rem; font-weight: 400; line-height: 1.4; white-space: normal;
+  padding: 0.4rem 0.6rem; border-radius: 6px; max-width: 200px; z-index: 10;
+  transition: opacity 0.15s, visibility 0.15s;
+}
+.calculator-tooltip-text::after {
+  content: ''; position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+  border: 5px solid transparent; border-top-color: var(--color-text);
+}
+.calculator-tooltip:hover .calculator-tooltip-text,
+.calculator-tooltip:focus .calculator-tooltip-text,
+.calculator-tooltip:focus-visible .calculator-tooltip-text { visibility: visible; opacity: 1; }
 .calculator-total { margin-top: 2rem; padding-top: 1.5rem; border-top: 2px solid var(--color-card-border, #e5e5e5); }
 .calculator-total-label { font-size: 1rem; font-weight: 600; margin: 0 0 0.25rem; color: var(--color-text); }
 .calculator-total-value { font-size: 1.75rem; font-weight: 700; margin: 0; color: var(--color-accent, #2563eb); }

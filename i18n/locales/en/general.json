@@ -9,7 +9,7 @@
     "faq": "FAQ"
   },
   "hero": {
-    "title": "N1B — Full-Cycle IT Solutions",
+    "title": "N1B - Full-Cycle IT Solutions",
     "subtitle": "Development and support of web and mobile applications, cloud infrastructure, and consulting. We deliver projects of any complexity.",
     "cta": "Discuss your project"
   },
@@ -52,11 +52,7 @@
     },
     {
       "q": "How is pricing determined?",
-      "a": "Based on effort, complexity, and timeline. We offer fixed price per phase or time-and-materials — whatever suits the client."
-    },
-    {
-      "q": "What technologies do you use?",
-      "a": "Web: Vue, React, Nuxt, Node. Mobile: React Native, Flutter. Backend and cloud: Node, Python, Go; AWS, GCP, Azure. We choose the stack per project."
+      "a": "Based on effort, complexity, and timeline. We offer fixed price per phase or time-and-materials - whatever suits the client."
     }
   ],
   "footer": {
@@ -100,24 +96,21 @@
   },
   "servicesTree": {
     "sites": {
-      "title": "Website development",
+      "title": "Websites",
       "shortDesc": "We build modern websites that work for your business.",
       "sub": {
         "landing": "Landing pages",
         "corporate": "Corporate sites",
         "webapp": "Web apps and SaaS",
         "redesign": "Redesign and updates",
-        "speed": "Speed and SEO optimization",
-        "ai": "AI and automation integration"
+        "speed": "Speed and SEO optimization"
       }
     },
     "apps": {
-      "title": "App development",
+      "title": "Applications",
       "shortDesc": "We design digital products for growth and scale.",
       "sub": {
         "mobile": "Mobile apps (iOS / Android)",
-        "crm": "Dashboards and CRM",
-        "api": "API and third-party integrations",
         "support": "Support and evolution"
       }
     },
@@ -128,8 +121,7 @@
         "audit": "Performance audit and improvement",
         "code": "Code and architecture optimization",
         "automation": "Process automation",
-        "ai": "AI solutions",
-        "analytics": "Analytics setup"
+        "ai": "AI solutions"
       }
     },
     "recruitment": {
@@ -148,6 +140,8 @@
     "back": "All services"
   },
   "serviceSubPage": {
-    "cta": "We'll discuss your needs and prepare a proposal. Get in touch."
+    "cta": "We'll discuss your needs and prepare a proposal. Get in touch.",
+    "calcPromoTitle": "Estimate the cost of your landing page",
+    "ctaBtn": "Calculate the cost"
   }
 }

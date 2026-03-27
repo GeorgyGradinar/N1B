@@ -14,7 +14,7 @@ export function isServiceSlug(slug: string): slug is ServiceSlug {
   return SERVICE_SLUGS.includes(slug as ServiceSlug)
 }
 
-// ——— Иерархический блок «Наши услуги» на главной ———
+// --- Иерархический блок «Наши услуги» на главной ---
 export type ServiceCategoryId = 'sites' | 'apps' | 'optimization' | 'recruitment'
 
 export const SERVICES_TREE: {
@@ -25,23 +25,19 @@ export const SERVICES_TREE: {
   {
     id: 'sites',
     icon: '🌐',
-    subKeys: ['landing', 'corporate', 'webapp', 'redesign', 'speed', 'ai'] as const
+    subKeys: ['landing', 'corporate', 'webapp', 'redesign', 'speed'] as const
   },
   {
     id: 'apps',
     icon: '📱',
-    subKeys: ['mobile', 'crm', 'api', 'support'] as const
+    subKeys: ['mobile', 'support'] as const
   },
   {
     id: 'optimization',
     icon: '⚡',
-    subKeys: ['audit', 'code', 'automation', 'ai', 'analytics'] as const
-  },
-  {
-    id: 'recruitment',
-    icon: '👥',
-    subKeys: ['frontend', 'devops', 'outstaff', 'project', 'assessment'] as const
+    subKeys: ['audit', 'code', 'automation', 'ai'] as const
   }
+  // recruitment скрыт: { id: 'recruitment', icon: '👥', subKeys: ['frontend', 'devops', 'outstaff', 'project', 'assessment'] }
 ]
 
 export function isServiceCategoryId(id: string): id is ServiceCategoryId {

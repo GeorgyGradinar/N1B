@@ -17,7 +17,7 @@
             "Access control is required: different roles, departments, permission levels",
             "You need to consolidate multiple tools into one platform"
           ],
-          "footer": "If at least two points apply — a corporate application will solve your challenge."
+          "footer": "If at least two points apply - a corporate application will solve your challenge."
         },
         "section3": {
           "title": "What do you get?",
@@ -34,20 +34,10 @@
           "title": "How we build it",
           "lead": "We offer two approaches:",
           "items": [
-            "Analysis of your current structure and processes — we look at how work is organized, find bottlenecks and automation opportunities, then design and build a web application to optimize those processes.",
-            "Build to a specific request — if you already have a clear brief or task description, we create a web application to your requirements without a prior analysis phase."
+            "Analysis of your current structure and processes - we look at how work is organized, find bottlenecks and automation opportunities, then design and build a web application to optimize those processes.",
+            "Build to a specific request - if you already have a clear brief or task description, we create a web application to your requirements without a prior analysis phase."
           ],
           "footer": "In both cases you get a working application that fits your environment and is ready to evolve."
-        },
-        "section5": {
-          "title": "How we work",
-          "p1": "We start by defining the goal and format: whether you need process analysis or you come with a ready request. Then we agree on scope, timeline, and priorities.",
-          "p2": "We develop in iterations: you see progress at each stage and can adjust direction. After launch we help with refinements, user training, and support."
-        },
-        "section6": {
-          "title": "Technology",
-          "p1": "We use a modern stack: Vue / Nuxt, React, Node.js, PostgreSQL, Docker. The choice depends on the task — we pick what fits your project best.",
-          "p2": "All applications are deployed to the cloud or your own servers, with automated deployment and monitoring."
         },
         "section7": {
           "title": "Support and evolution",
@@ -70,7 +60,7 @@
         },
         {
           "q": "Do I need a dedicated server?",
-          "a": "Not necessarily. We can deploy to the cloud (AWS, Google Cloud, Hetzner) or your own servers — it depends on security requirements and budget."
+          "a": "Not necessarily. We can deploy to the cloud (AWS, Google Cloud, Hetzner) or your own servers - it depends on security requirements and budget."
         },
         {
           "q": "Can the application be extended after launch?",

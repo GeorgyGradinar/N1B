@@ -39,7 +39,7 @@ const breadcrumbItems = computed(() =>
 )
 
 useHead({
-  title: () => (serviceSlug.value ? `${t(`services.${serviceSlug.value}.title`)} — N1B` : 'N1B'),
+  title: () => (serviceSlug.value ? `${t(`services.${serviceSlug.value}.title`)} - N1B` : 'N1B'),
   meta: [
     {
       name: 'description',

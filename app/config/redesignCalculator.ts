@@ -1,7 +1,7 @@
 import type { CalculatorGroup } from './landingCalculator'
 
 export const redesignCalculatorConfig = {
-  basePrice: 600,
+  basePrice: 300,
   groups: [
     {
       id: 'scope',
@@ -11,16 +11,6 @@ export const redesignCalculatorConfig = {
         { value: 'scopeVisual', labelKey: 'scopeVisual', price: 0 },
         { value: 'scopeFull', labelKey: 'scopeFull', price: 500 },
         { value: 'scopeRebuild', labelKey: 'scopeRebuild', price: 1200 }
-      ]
-    },
-    {
-      id: 'pages',
-      type: 'radio',
-      labelKey: 'pages',
-      options: [
-        { value: 'pagesSmall', labelKey: 'pagesSmall', price: 0 },
-        { value: 'pagesMedium', labelKey: 'pagesMedium', price: 300 },
-        { value: 'pagesLarge', labelKey: 'pagesLarge', price: 700 }
       ]
     },
     {
@@ -37,13 +27,27 @@ export const redesignCalculatorConfig = {
       type: 'checkbox',
       labelKey: 'extra',
       options: [
-        { value: 'extraMigration', labelKey: 'extraMigration', price: 200 },
-        { value: 'extraSeo', labelKey: 'extraSeo', price: 150 },
-        { value: 'extraMobile', labelKey: 'extraMobile', price: 100 },
-        { value: 'extraSpeed', labelKey: 'extraSpeed', price: 150 },
-        { value: 'extraAnalytics', labelKey: 'extraAnalytics', price: 80 },
-        { value: 'extraCrm', labelKey: 'extraCrm', price: 200 },
-        { value: 'extraMultilang', labelKey: 'extraMultilang', price: 150 }
+        { value: 'extraMobile', labelKey: 'extraMobile', price: 200 },
+        { value: 'extraSpeed', labelKey: 'extraSpeed', price: 200 },
+        { value: 'extraAnalytics', labelKey: 'extraAnalytics', price: 50 }
+      ]
+    },
+    {
+      id: 'languages',
+      type: 'checkbox',
+      labelKey: 'languages',
+      options: [
+        { value: 'langEn', labelKey: 'langEn', price: 150 },
+        { value: 'langKa', labelKey: 'langKa', price: 150 },
+        { value: 'langUk', labelKey: 'langUk', price: 150 },
+        { value: 'langRu', labelKey: 'langRu', price: 150 },
+        { value: 'langDe', labelKey: 'langDe', price: 150 },
+        { value: 'langFr', labelKey: 'langFr', price: 150 },
+        { value: 'langEs', labelKey: 'langEs', price: 150 },
+        { value: 'langIt', labelKey: 'langIt', price: 150 },
+        { value: 'langAr', labelKey: 'langAr', price: 150 },
+        { value: 'langZh', labelKey: 'langZh', price: 150 },
+        { value: 'langTr', labelKey: 'langTr', price: 150 }
       ]
     },
     {

@@ -5,7 +5,7 @@
         "section1": {
           "title": "What is a landing page?",
           "p1": "A landing page is a single-page website created for one specific goal.",
-          "p2": "Simply put: it's a page that persuades a visitor to take one action — submit a request, buy a product, sign up, download, or register.",
+          "p2": "Simply put: it's a page that persuades a visitor to take one action - submit a request, buy a product, sign up, download, or register.",
           "p3": "There's nothing extra on a landing page."
         },
         "section2": {
@@ -19,7 +19,7 @@
             "Online courses and webinars",
             "Ad campaigns (Google / Meta / TikTok)"
           ],
-          "footer": "If you need results right now — a landing page is the most effective format."
+          "footer": "If you need results right now - a landing page is the most effective format."
         },
         "section3": {
           "title": "What do you get?",
@@ -36,7 +36,7 @@
       "landingFaq": [
         { "q": "How is a landing page different from a regular website?", "a": "A landing page is a single-page site with one clear goal: a lead, purchase, or sign-up. A regular site can have many pages and sections; a landing page focuses on one action." },
         { "q": "How long does development take?", "a": "On average, 7 to 14 days. The timeline depends on design complexity, number of sections, and extra features." },
-        { "q": "Is a landing page right for my business?", "a": "If you need to test an idea quickly, run ads, or increase leads — a landing page is a great fit." },
+        { "q": "Is a landing page right for my business?", "a": "If you need to test an idea quickly, run ads, or increase leads - a landing page is a great fit." },
         { "q": "Do you design from scratch?", "a": "Yes. We can create a custom design or use an optimized template when speed and budget matter." },
         { "q": "Will the landing page work on mobile?", "a": "Yes. All our landing pages are fully responsive and work correctly on smartphones and tablets." },
         { "q": "Can you add payment to the site?", "a": "Yes. We integrate online payment, CRM, lead forms, and other integrations you need." },
@@ -83,22 +83,26 @@
       "landingCalculator": {
         "title": "Landing page cost calculator",
         "designType": "Design type",
-        "designTemplate": "Template-based",
-        "designIndividual": "Custom design",
+        "designAi": "AI-generated - 30",
+        "designAiTooltip": "Based on client description and preferences",
+        "designIndividual": "Custom design - from 250",
+        "designIndividualTooltip": "With detailed elaboration of all requirements",
         "copywriting": "Need copywriting?",
-        "copyClient": "Client provides copy",
-        "copySales": "Sales copy needed",
+        "copyClient": "Client provides copy - 0",
+        "copySales": "Sales copy needed - from 50",
         "extra": "Extra features",
-        "extraCalculator": "On-site calculator",
-        "extraChat": "Live chat",
-        "extraCrm": "CRM integration",
-        "extraPayment": "Payment integration",
-        "extraMultilang": "Multi-language",
-        "extraAi": "AI integration (chatbot, response generation)",
+        "extraCalculator": "On-site calculator - from 100",
+        "extraChat": "Live chat - 100",
+        "extraChatTooltip": "Support, third-party service integration",
+        "extraCrm": "CRM integration - from 200",
+        "extraPayment": "Payment integration - from 150",
+        "extraMultilang": "Multi-language - from 150",
+        "extraAi": "AI integration (chatbot, response generation) - 300",
+        "extraAiTooltip": "Per one neural network",
         "animations": "Design animations",
-        "animNone": "No animations",
-        "animLight": "Light animations",
-        "animAdvanced": "Advanced animations",
+        "animNone": "No animations - 0",
+        "animLight": "Light animations - 0",
+        "animAdvanced": "Advanced animations - from 100",
         "timeline": "Timeline",
         "timelineStandard": "Standard",
         "timelineUrgent": "Rush development",
