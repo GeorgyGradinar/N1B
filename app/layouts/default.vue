@@ -94,7 +94,7 @@
           <NuxtLink :to="localePath('/') + '#faq'" class="footer-link">{{ t('nav.faq') }}</NuxtLink>
         </nav>
 
-        <p class="footer-copy">{{ t('footer.copy', { year: String(new Date().getFullYear()) }) }}</p>
+        <p class="footer-copy">{{ t('footer.copy', { year: '2023' }) }}</p>
       </div>
     </footer>
   </div>

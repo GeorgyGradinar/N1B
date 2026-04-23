@@ -35,7 +35,7 @@ export const SERVICES_TREE: {
   {
     id: 'optimization',
     icon: '⚡',
-    subKeys: ['audit', 'code', 'automation', 'ai'] as const
+    subKeys: ['audit'] as const
   }
   // recruitment скрыт: { id: 'recruitment', icon: '👥', subKeys: ['frontend', 'devops', 'outstaff', 'project', 'assessment'] }
 ]

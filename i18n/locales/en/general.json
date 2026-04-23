@@ -11,7 +11,15 @@
   "hero": {
     "title": "N1B - Full-Cycle IT Solutions",
     "subtitle": "Development and support of web and mobile applications, cloud infrastructure, and consulting. We deliver projects of any complexity.",
-    "cta": "Discuss your project"
+    "cta": "Discuss your project",
+    "decorativeBadge": "IT solutions & digital products",
+    "cardStatus": "Available for new projects",
+    "cardFeatures": [
+      "Full-cycle development",
+      "Modern tech stack",
+      "Transparent processes",
+      "On-time delivery"
+    ]
   },
   "sections": {
     "servicesTitle": "Our services",

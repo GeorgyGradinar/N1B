@@ -10,7 +10,7 @@
         <div class="hero-left">
           <div class="hero-badge">
             <span class="hero-badge-dot" aria-hidden="true"></span>
-            IT Solutions &amp; Digital Products
+            {{ t('hero.decorativeBadge') }}
           </div>
           <h1 class="hero-title">{{ t('hero.title') }}</h1>
           <p class="hero-subtitle">{{ t('hero.subtitle') }}</p>
@@ -28,7 +28,7 @@
           <div class="hero-card">
             <div class="hero-card-status">
               <span class="status-dot"></span>
-              <span class="status-text">Available for new projects</span>
+              <span class="status-text">{{ t('hero.cardStatus') }}</span>
             </div>
             <div class="hero-card-metrics">
               <div class="hero-metric">
@@ -47,10 +47,9 @@
               </div>
             </div>
             <ul class="hero-card-features">
-              <li><span class="feat-check">✓</span> Full-cycle development</li>
-              <li><span class="feat-check">✓</span> Modern tech stack</li>
-              <li><span class="feat-check">✓</span> Transparent processes</li>
-              <li><span class="feat-check">✓</span> On-time delivery</li>
+              <li v-for="(feat, i) in heroCardFeatures" :key="i">
+                <span class="feat-check" aria-hidden="true">✓</span> {{ feat }}
+              </li>
             </ul>
             <div class="hero-card-stack">
               <span v-for="t2 in ['Vue', 'React', 'Node', 'Flutter', 'AWS']" :key="t2" class="hero-card-tag">{{ t2 }}</span>
@@ -210,6 +209,11 @@ import type { ServiceCategoryId } from '~/utils/services'
 import { SERVICES_TREE } from '~/utils/services'
 
 const { t, get, localePath } = useAppI18n()
+
+const heroCardFeatures = computed(() => {
+  const raw = get<unknown>('hero.cardFeatures')
+  return Array.isArray(raw) ? (raw as string[]) : []
+})
 
 const techStack = ['Vue', 'React', 'Node.js', 'Flutter', 'AWS', 'Python', 'AI / ML']
 

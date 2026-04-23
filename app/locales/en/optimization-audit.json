@@ -1,0 +1,129 @@
+{
+  "servicesTree": {
+    "optimization": {
+      "auditContent": {
+        "section1": {
+          "title": "What is a performance audit?",
+          "p1": "A performance audit is a comprehensive check of your website or application: load speed, SEO factors, code quality, security, and accessibility.",
+          "p2": "Without an audit, optimization is guesswork. We pinpoint exactly what is slowing your project down and directly affecting your Google rankings and conversions.",
+          "p3": "You receive a concrete action plan — not vague advice."
+        },
+        "section2": {
+          "title": "When do you need an audit?",
+          "lead": "Your site needs an audit if:",
+          "items": [
+            "Pages take longer than 3 seconds to load",
+            "Google PageSpeed shows low scores",
+            "High bounce rate",
+            "Search rankings are dropping for no obvious reason",
+            "Users complain about slow performance",
+            "Things got slower after recent updates",
+            "You are planning to scale or launch ad campaigns"
+          ]
+        },
+        "section3": {
+          "title": "What we check",
+          "lead": "During the audit we analyze:",
+          "items": [
+            "Core Web Vitals (LCP, FID / INP, CLS)",
+            "Load speed on mobile and desktop",
+            "Image and media optimization",
+            "Caching, CDN, and resource compression",
+            "Code quality and dependencies (bundle size, dead code)",
+            "SEO factors: meta tags, structure, robots.txt, sitemap",
+            "Security: HTTPS, headers, vulnerabilities",
+            "Accessibility (a11y) and HTML semantics"
+          ]
+        },
+        "section4": {
+          "title": "What you get",
+          "items": [
+            "Detailed technical report with scores",
+            "Prioritized issue list (critical / important / nice-to-have)",
+            "Step-by-step instructions for fixing each issue",
+            "Before-and-after metrics comparison after implementing fixes",
+            "Forecast for improved search rankings and conversion"
+          ]
+        },
+        "section5": {
+          "title": "How the audit works",
+          "lead": "A 5-step process:",
+          "items": [
+            "Collecting information about your project and goals",
+            "Automated scanning (Lighthouse, PageSpeed Insights, GTmetrix)",
+            "Manual analysis of code, architecture, and configuration",
+            "Preparing the report with prioritized recommendations",
+            "Results walkthrough: online meeting or call"
+          ],
+          "footer": "Timeline: 2 to 5 business days depending on project size."
+        }
+      },
+      "auditFaq": [
+        { "q": "How quickly can you complete the audit?", "a": "An express audit takes 1-2 business days; a full audit takes 3 to 5 days. Rush options are available if needed." },
+        { "q": "What will the final report look like?", "a": "A document with scores for each section, a prioritized issue table (critical, important, nice-to-have), and step-by-step recommendations. You will know exactly what to do next." },
+        { "q": "Do you also implement the fixes?", "a": "Yes. After the audit you can order a full implementation of the recommendations from us — we will fix everything for you." },
+        { "q": "Do you need access to the code?", "a": "A surface-level audit only requires the site URL. A deep code analysis requires access to the repository." },
+        { "q": "Does this work for mobile apps?", "a": "Yes. We audit both websites and mobile applications (React Native, Flutter, native iOS/Android)." },
+        { "q": "What are Core Web Vitals and why do they matter?", "a": "Core Web Vitals are Google's metrics (load speed, interactivity, visual stability). They have been a direct search ranking factor since 2021." },
+        { "q": "How much will performance improve after the fixes?", "a": "On average clients see a PageSpeed Score increase of 20–50 points and load times improve 1.5–3×." },
+        { "q": "How much does an audit cost?", "a": "Cost depends on site size and depth of analysis. Use our calculator below to get an estimate." }
+      ],
+      "auditComparison": {
+        "title": "Express audit or full audit?",
+        "prosLabel": "Pros",
+        "consLabel": "Cons",
+        "express": {
+          "label": "Express audit",
+          "pros": [
+            "Ready in 1-2 business days",
+            "Affordable cost",
+            "Key metrics and top issues covered",
+            "Great for landing pages and MVPs"
+          ],
+          "cons": [
+            "No deep code analysis",
+            "No security check",
+            "Fewer details in the report"
+          ]
+        },
+        "full": {
+          "label": "Full audit",
+          "pros": [
+            "In-depth analysis of all system layers",
+            "Code, security, and accessibility checks",
+            "Prioritized implementation plan",
+            "Maximum precision of recommendations"
+          ],
+          "cons": [
+            "Takes 3-5 business days",
+            "Higher cost"
+          ]
+        }
+      },
+      "auditCta": "Let's discuss your project and prepare a proposal. Get in touch.",
+      "auditCalcPromo": "Estimate the cost of your audit",
+      "auditCtaBtn": "Calculate cost",
+      "auditCalculator": {
+        "title": "Audit cost calculator",
+        "scope": "Site / application size",
+        "scopeSmall": "Up to 5 pages (landing, MVP) — 100",
+        "scopeMedium": "5–20 pages — from 200",
+        "scopeLarge": "20+ pages or application — from 350",
+        "checks": "Additional checks",
+        "checksSeo": "SEO analysis — 80",
+        "checksSecurity": "Security audit — 120",
+        "checksA11y": "Accessibility check (a11y) — 60",
+        "checksCode": "Code analysis (code review) — 150",
+        "report": "Report format",
+        "reportBrief": "Brief recommendations",
+        "reportDetailed": "Detailed report with priorities — 80",
+        "reportFull": "Full report + implementation plan — 180",
+        "timeline": "Timeline",
+        "timelineStandard": "Standard (3-5 days)",
+        "timelineUrgent": "Rush (1-2 days)",
+        "total": "Total",
+        "totalNote": "Estimated cost. Exact pricing after discussing your project."
+      }
+    }
+  }
+}
