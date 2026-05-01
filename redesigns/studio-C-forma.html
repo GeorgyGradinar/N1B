@@ -1,0 +1,572 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>FORMA — Design Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#fafaf7;            /* off-white */
+    --paper:#ffffff;
+    --ink:#0a0a0a;
+    --ink-2:#202020;
+    --muted:#737373;
+    --line:#e5e3dc;
+    --line-2:#cfccc1;
+    --accent:#ff3621;        /* red */
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);color:var(--ink);
+    font-family:"Inter",system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
+    font-feature-settings:"ss01","cv11";
+  }
+  ::selection{background:var(--accent);color:#fff}
+  a{color:inherit;text-decoration:none}
+  .display{font-family:"Inter Tight","Inter",sans-serif;letter-spacing:-.04em}
+  .mono{font-family:"JetBrains Mono",ui-monospace,monospace}
+  /* full-bleed shell — padding scales with viewport */
+  :root{--gutter:clamp(24px, 3.4vw, 88px)}
+  .wrap{width:100%;margin:0;padding:0 var(--gutter)}
+
+  /* baseline grid */
+  .grid-bg{position:fixed;inset:0;pointer-events:none;z-index:1;opacity:0;transition:opacity .3s ease;background-image:linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:calc((100vw - 2 * var(--gutter)) / 12) 100%;background-position:var(--gutter) 0}
+
+  /* ── nav ── */
+  .nav{position:sticky;top:0;z-index:50;background:rgba(250,250,247,.85);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nav-row{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:16px var(--gutter);width:100%;gap:24px}
+  .brand{display:flex;align-items:center;gap:8px;font-family:"Inter Tight";font-size:1.08rem;font-weight:600;letter-spacing:-.02em}
+  .brand .dot{width:8px;height:8px;background:var(--accent);display:inline-block}
+  .nav-links{display:flex;gap:32px;font-size:.92rem;color:var(--ink-2);justify-self:center;font-weight:500}
+  .nav-links a{position:relative;padding:6px 0}
+  .nav-links a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1.5px;background:var(--accent);transform:scaleX(0);transform-origin:right;transition:transform .3s ease}
+  .nav-links a:hover::after{transform:scaleX(1);transform-origin:left}
+  .nav-cta{display:flex;align-items:center;gap:14px;justify-self:end}
+  .clock{font-family:"JetBrains Mono";font-size:.74rem;color:var(--muted);letter-spacing:.02em}
+  .btn{display:inline-flex;align-items:center;gap:10px;font-weight:500;font-size:.9rem;padding:10px 16px;border:1px solid var(--ink);background:var(--ink);color:var(--bg);transition:all .2s ease}
+  .btn:hover{background:var(--accent);border-color:var(--accent)}
+  .btn.ghost{background:transparent;color:var(--ink)}
+  .btn.ghost:hover{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+
+  /* ── hero ── */
+  .hero{padding:clamp(60px,7vw,140px) 0 clamp(80px,8vw,160px);border-bottom:1px solid var(--line);position:relative}
+  .hero-meta{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(16px,1.6vw,32px);margin-bottom:clamp(60px,7vw,120px);font-family:"JetBrains Mono";font-size:clamp(.72rem,.8vw,.86rem);color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
+  .hero-meta > span:nth-child(1){grid-column:span 2}
+  .hero-meta > span:nth-child(2){grid-column:span 4}
+  .hero-meta > span:nth-child(3){grid-column:span 3}
+  .hero-meta > span:nth-child(4){grid-column:span 3;text-align:right}
+  .hero-meta b{color:var(--ink);font-weight:500}
+  .hero-meta .live{color:var(--accent);font-weight:500}
+
+  .h1{
+    font-family:"Inter Tight";
+    font-weight:500;
+    font-size:clamp(3rem,10.4vw,14rem);
+    line-height:.92;
+    letter-spacing:-.05em;
+    max-width:14ch;
+  }
+  .h1 sup{font-family:"JetBrains Mono";font-size:.16em;font-weight:400;color:var(--muted);letter-spacing:0;vertical-align:top;margin-left:.1em}
+  .h1 .red{color:var(--accent)}
+  .h1 .light{font-weight:300;color:var(--ink-2)}
+
+  .hero-foot{margin-top:clamp(60px,7vw,120px);display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(16px,1.6vw,32px);align-items:end;border-top:1px solid var(--line);padding-top:32px}
+  .hero-foot .lead{grid-column:span 5;font-size:clamp(1.05rem,1.1vw,1.25rem);line-height:1.55;color:var(--ink-2);max-width:48ch}
+  .hero-foot .lead b{color:var(--ink);font-weight:500}
+  .hero-foot .right{grid-column:9 / span 4;display:flex;flex-direction:column;gap:14px;align-items:flex-start;justify-self:end;width:100%;max-width:380px}
+  .hero-foot .right .stat{font-family:"Inter Tight";font-size:clamp(1rem,1vw,1.15rem);color:var(--ink-2);display:flex;align-items:baseline;gap:14px;width:100%;justify-content:space-between}
+  .hero-foot .right .stat b{font-size:clamp(1.6rem,1.6vw,2rem);font-weight:500;color:var(--ink);letter-spacing:-.02em;font-feature-settings:"tnum"}
+  .hero-foot .right .stat:not(:last-child){border-bottom:1px solid var(--line);padding-bottom:10px}
+
+  /* ── work / index ── */
+  .section{padding:clamp(90px,9vw,180px) 0;border-bottom:1px solid var(--line);position:relative}
+  .section-row{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(16px,1.6vw,32px);align-items:end;margin-bottom:clamp(48px,5vw,96px)}
+  .section-num{grid-column:span 2;font-family:"JetBrains Mono";font-size:clamp(.72rem,.8vw,.86rem);letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+  .section-num b{color:var(--accent);font-weight:500}
+  .section-title{grid-column:span 7;font-family:"Inter Tight";font-weight:500;font-size:clamp(2rem,5.6vw,7.2rem);letter-spacing:-.04em;line-height:1;max-width:18ch}
+  .section-title .light{font-weight:300;color:var(--ink-2)}
+  .section-title .red{color:var(--accent)}
+  .section-meta{grid-column:11 / span 2;font-family:"JetBrains Mono";font-size:clamp(.72rem,.8vw,.86rem);letter-spacing:.04em;text-transform:uppercase;color:var(--muted);text-align:right}
+
+  .work-table{border-top:1px solid var(--line)}
+  .work-row{display:grid;grid-template-columns:80px 2fr 2.4fr 1.6fr 120px 80px;gap:clamp(16px,1.6vw,32px);padding:clamp(20px,1.8vw,32px) 0;border-bottom:1px solid var(--line);align-items:center;transition:padding .25s ease, color .25s ease;cursor:pointer;position:relative}
+  .work-row:hover{padding-left:18px;padding-right:18px;background:var(--paper)}
+  .work-row:hover .arr{transform:translateX(8px);color:var(--accent)}
+  .work-row .num{font-family:"JetBrains Mono";font-size:clamp(.76rem,.82vw,.88rem);color:var(--muted);letter-spacing:.04em}
+  .work-row .name{font-family:"Inter Tight";font-size:clamp(1.4rem,1.6vw,2rem);font-weight:500;letter-spacing:-.02em}
+  .work-row .role{color:var(--ink-2);font-size:clamp(.94rem,1vw,1.1rem)}
+  .work-row .tags{display:flex;gap:6px;flex-wrap:wrap}
+  .work-row .tags span{font-family:"JetBrains Mono";font-size:clamp(.7rem,.74vw,.8rem);letter-spacing:.04em;text-transform:uppercase;color:var(--muted);padding:3px 9px;border:1px solid var(--line);border-radius:3px}
+  .work-row .year{font-family:"JetBrains Mono";font-size:clamp(.86rem,.94vw,1rem);color:var(--muted);text-align:right;font-feature-settings:"tnum"}
+  .work-row .arr{font-family:"Inter Tight";font-size:clamp(1.2rem,1.4vw,1.6rem);color:var(--muted);justify-self:end;transition:all .3s ease}
+  .work-row.feat .name::before{content:"●";color:var(--accent);margin-right:10px;font-size:.8em;vertical-align:middle}
+
+  .work-foot{margin-top:32px;display:flex;justify-content:space-between;align-items:center;font-family:"JetBrains Mono";font-size:.78rem;color:var(--muted)}
+  .work-foot a{color:var(--ink);font-weight:500;border-bottom:1px solid var(--ink)}
+
+  /* ── services ── */
+  .svc-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:0;border-top:1px solid var(--line);border-left:1px solid var(--line)}
+  .svc{grid-column:span 6;padding:clamp(32px,3vw,56px) clamp(28px,2.6vw,52px) clamp(28px,2.6vw,48px);border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg);display:flex;flex-direction:column;gap:18px;transition:background .25s ease;min-height:clamp(360px,28vw,520px)}
+  .svc:hover{background:var(--paper)}
+  .svc:hover h3{color:var(--accent)}
+  .svc .num{font-family:"JetBrains Mono";font-size:clamp(.72rem,.78vw,.82rem);letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+  .svc h3{font-family:"Inter Tight";font-weight:500;font-size:clamp(2rem,2.6vw,3.4rem);letter-spacing:-.025em;line-height:1.02;transition:color .25s ease;max-width:14ch}
+  .svc h3 .light{font-weight:300;color:var(--ink-2)}
+  .svc p{color:var(--ink-2);font-size:clamp(.98rem,1.04vw,1.15rem);line-height:1.55;max-width:48ch}
+  .svc-list{list-style:none;display:flex;flex-direction:column;margin-top:auto;padding-top:18px;border-top:1px solid var(--line);font-size:clamp(.92rem,.98vw,1.04rem)}
+  .svc-list li{display:grid;grid-template-columns:1fr auto;gap:12px;padding:8px 0;font-feature-settings:"tnum";color:var(--ink-2)}
+  .svc-list li small{font-family:"JetBrains Mono";font-size:clamp(.74rem,.8vw,.84rem);color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
+
+  /* ── process ── */
+  .process{display:grid;grid-template-columns:repeat(12,1fr);gap:0;border-top:1px solid var(--line)}
+  .step{grid-column:span 3;padding:clamp(32px,2.8vw,52px) clamp(24px,2vw,40px) clamp(28px,2.4vw,44px);border-right:1px solid var(--line);position:relative;display:flex;flex-direction:column;gap:18px;min-height:clamp(280px,22vw,400px)}
+  .step:last-child{border-right:none}
+  .step .num{font-family:"Inter Tight";font-size:clamp(4rem,5.4vw,7rem);font-weight:500;letter-spacing:-.045em;color:var(--accent);line-height:.85;font-feature-settings:"tnum"}
+  .step h4{font-family:"Inter Tight";font-size:clamp(1.3rem,1.5vw,1.8rem);font-weight:500;letter-spacing:-.015em}
+  .step p{color:var(--ink-2);font-size:clamp(.94rem,1vw,1.08rem);line-height:1.55;max-width:32ch}
+  .step .when{font-family:"JetBrains Mono";font-size:clamp(.74rem,.8vw,.84rem);color:var(--muted);letter-spacing:.04em;text-transform:uppercase;margin-top:auto;padding-top:14px;border-top:1px dashed var(--line-2)}
+
+  /* ── manifesto ── */
+  .manifesto{padding:clamp(100px,9vw,180px) var(--gutter);background:var(--ink);color:var(--bg);text-align:left;border-bottom:1px solid var(--line)}
+  .manifesto-row{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(16px,1.6vw,32px)}
+  .manifesto-row .num{grid-column:span 2;font-family:"JetBrains Mono";font-size:clamp(.72rem,.8vw,.86rem);letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+  .manifesto-row .num b{color:var(--accent);font-weight:500}
+  .manifesto-row .text{grid-column:span 10;font-family:"Inter Tight";font-weight:300;font-size:clamp(1.8rem,4.6vw,5.2rem);line-height:1.12;letter-spacing:-.03em}
+  .manifesto-row .text b{font-weight:500;color:var(--bg)}
+  .manifesto-row .text .red{color:var(--accent);font-weight:500}
+  .manifesto-row .text .strike{text-decoration:line-through;text-decoration-thickness:2px;text-decoration-color:var(--accent);color:var(--muted)}
+  .manifesto-meta{margin-top:clamp(64px,6vw,120px);display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(16px,1.6vw,32px);padding-top:32px;border-top:1px solid #2a2a2a}
+  .manifesto-meta .col{grid-column:span 4}
+  .manifesto-meta .col h5{font-family:"JetBrains Mono";font-size:clamp(.72rem,.8vw,.86rem);letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+  .manifesto-meta .col p{font-size:clamp(.96rem,1.04vw,1.15rem);line-height:1.55;color:#bfbfbf;max-width:46ch}
+  .manifesto-meta .col p b{color:var(--bg);font-weight:500}
+
+  /* ── clients table ── */
+  .clients-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:0;border-top:1px solid var(--line);border-left:1px solid var(--line)}
+  .client{padding:clamp(28px,2.6vw,52px) clamp(18px,1.6vw,32px);border-right:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-family:"Inter Tight";font-size:clamp(1.1rem,1.2vw,1.5rem);font-weight:500;letter-spacing:-.02em;color:var(--ink-2);transition:all .25s ease;cursor:default;min-height:clamp(120px,9vw,160px)}
+  .client:hover{background:var(--ink);color:var(--bg)}
+  .client small{font-family:"JetBrains Mono";font-size:.72rem;color:var(--muted);letter-spacing:.04em;text-transform:uppercase;display:block;text-align:center;margin-top:4px;font-weight:400}
+  .client:hover small{color:var(--accent)}
+
+  /* ── FAQ ── */
+  .faq-table{border-top:1px solid var(--ink)}
+  .faq-row{border-bottom:1px solid var(--line);padding:0;cursor:pointer}
+  .faq-row summary{list-style:none;display:grid;grid-template-columns:80px 1fr auto;gap:clamp(16px,1.6vw,32px);align-items:center;padding:clamp(20px,1.8vw,32px) 0;font-family:"Inter Tight";font-size:clamp(1.4rem,2vw,2.4rem);font-weight:500;letter-spacing:-.025em;line-height:1.15}
+  .faq-row summary::-webkit-details-marker{display:none}
+  .faq-row summary .n{font-family:"JetBrains Mono";font-size:clamp(.78rem,.86vw,.92rem);color:var(--muted);font-weight:400;letter-spacing:.04em}
+  .faq-row[open] summary .n{color:var(--accent)}
+  .faq-row[open] summary{color:var(--accent)}
+  .faq-row summary .ic{font-family:"Inter Tight";font-weight:300;font-size:clamp(1.6rem,2vw,2.2rem);color:var(--muted);transition:transform .25s ease}
+  .faq-row[open] summary .ic{transform:rotate(45deg);color:var(--accent)}
+  .faq-row .a{padding:0 0 clamp(20px,1.8vw,32px) clamp(96px,11vw,200px);color:var(--ink-2);font-size:clamp(1rem,1.06vw,1.18rem);line-height:1.6;max-width:64ch}
+
+  /* ── CTA ── */
+  .cta{padding:clamp(120px,11vw,220px) var(--gutter);text-align:left;background:var(--bg)}
+  .cta-row{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(16px,1.6vw,32px);align-items:center}
+  .cta-row .num{grid-column:span 2;font-family:"JetBrains Mono";font-size:clamp(.72rem,.8vw,.86rem);letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+  .cta-row .num b{color:var(--accent);font-weight:500}
+  .cta-row h3{grid-column:span 7;font-family:"Inter Tight";font-weight:500;font-size:clamp(2.4rem,7vw,8.6rem);line-height:.94;letter-spacing:-.05em;max-width:14ch}
+  .cta-row h3 .light{font-weight:300;color:var(--ink-2)}
+  .cta-row h3 .red{color:var(--accent)}
+  .cta-row .actions{grid-column:11 / span 2;display:flex;flex-direction:column;gap:10px;align-items:flex-start;justify-self:end;width:100%;max-width:340px}
+  .cta-row .actions .btn{padding:14px 20px;width:100%;justify-content:space-between;font-size:clamp(.9rem,.98vw,1.04rem)}
+
+  /* ── footer ── */
+  .foot{padding:clamp(48px,4.4vw,90px) var(--gutter) clamp(28px,2.6vw,48px);background:var(--paper);border-top:1px solid var(--line)}
+  .foot-wrap{width:100%}
+  .foot-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(16px,1.6vw,32px);padding-bottom:clamp(40px,4vw,72px);border-bottom:1px solid var(--line)}
+  .foot-grid .b1{grid-column:span 4}
+  .foot-grid .b2,.foot-grid .b3,.foot-grid .b4{grid-column:span 2}
+  .foot-grid .b5{grid-column:span 2}
+  .foot-grid h4{font-family:"JetBrains Mono";font-size:clamp(.72rem,.78vw,.82rem);letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;font-weight:500}
+  .foot-grid ul{list-style:none;display:flex;flex-direction:column;gap:8px;font-size:clamp(.94rem,1vw,1.08rem);color:var(--ink-2)}
+  .foot-grid a:hover{color:var(--accent)}
+  .foot-grid .signoff{font-family:"Inter Tight";font-size:clamp(1.3rem,1.6vw,2rem);font-weight:500;letter-spacing:-.025em;line-height:1.15;margin-top:14px;max-width:22ch}
+  .foot-grid .signoff .red{color:var(--accent)}
+  .foot-bot{margin-top:clamp(28px,2.4vw,40px);display:flex;justify-content:space-between;font-family:"JetBrains Mono";font-size:clamp(.74rem,.82vw,.88rem);color:var(--muted);letter-spacing:.04em;flex-wrap:wrap;gap:14px}
+  .foot-mark{margin-top:clamp(40px,4vw,72px);font-family:"Inter Tight";font-size:clamp(4rem,16vw,22rem);font-weight:500;letter-spacing:-.07em;line-height:.82;color:var(--ink);position:relative}
+  .foot-mark .red{color:var(--accent)}
+  .foot-mark .reg{font-family:"JetBrains Mono";font-size:.13em;font-weight:400;color:var(--muted);letter-spacing:.04em;vertical-align:top;margin-left:.1em}
+
+  /* tablet */
+  @media (max-width:1280px){
+    .work-row{grid-template-columns:60px 1.4fr 1.8fr 1.2fr 90px 50px}
+    .step{grid-column:span 6;border-bottom:1px solid var(--line)}
+    .step:nth-child(2n){border-right:none}
+    .clients-grid{grid-template-columns:repeat(4,1fr)}
+  }
+
+  /* mobile */
+  @media (max-width:980px){
+    .hero-meta > span,.hero-foot .lead,.hero-foot .right{grid-column:span 12}
+    .hero-foot .right{justify-self:flex-start;max-width:none}
+    .section-num,.section-title,.section-meta{grid-column:span 12;text-align:left}
+    .work-row{grid-template-columns:40px 1fr 60px;gap:14px;padding:16px 0}
+    .work-row .role,.work-row .tags,.work-row .year{display:none}
+    .svc{grid-column:span 12;min-height:auto}
+    .step{grid-column:span 12;border-right:none;border-bottom:1px solid var(--line);min-height:auto}
+    .clients-grid{grid-template-columns:repeat(2,1fr)}
+    .manifesto-row .num,.manifesto-row .text,.manifesto-meta .col{grid-column:span 12}
+    .cta-row .num,.cta-row h3,.cta-row .actions{grid-column:span 12}
+    .cta-row .actions{justify-self:flex-start;max-width:none}
+    .foot-grid .b1{grid-column:span 12}
+    .foot-grid .b2,.foot-grid .b3,.foot-grid .b4,.foot-grid .b5{grid-column:span 6}
+    .nav-links{display:none}
+    .nav-row{grid-template-columns:1fr auto}
+  }
+</style>
+</head>
+<body>
+
+<div class="grid-bg"></div>
+
+<nav class="nav">
+  <div class="nav-row">
+    <a class="brand" href="#">FORMA<span class="dot"></span><span style="color:var(--muted);font-weight:400;font-size:.92rem;margin-left:6px">design studio</span></a>
+    <div class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#services">Services</a>
+      <a href="#about">Studio</a>
+      <a href="#process">Process</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="nav-cta">
+      <span class="clock">Tbilisi · 23:42 GMT+4</span>
+      <a class="btn" href="#contact">New project →</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-meta">
+      <span><b>FORMA</b> / Design Studio</span>
+      <span>An independent practice for brand &amp; web</span>
+      <span>Index <b>—</b> Vol. 12 / 2026</span>
+      <span class="live">● Available — Q3 / Q4 2026</span>
+    </div>
+
+    <h1 class="h1 display">
+      Design with<sup>01</sup><br/>
+      a clear<br/>
+      <span class="light">point of</span> <span class="red">view.</span>
+    </h1>
+
+    <div class="hero-foot">
+      <p class="lead">FORMA is an <b>independent design studio</b> working in brand identity, web design and digital product. We build clear, considered work for companies that take their craft as seriously as we take ours.</p>
+      <div class="right">
+        <div class="stat"><span>Founded</span><b>2021</b></div>
+        <div class="stat"><span>Projects</span><b>74</b></div>
+        <div class="stat"><span>Recognitions</span><b>11</b></div>
+        <div class="stat"><span>Studio size</span><b>6</b></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ── Selected Work ── -->
+<section class="section" id="work">
+  <div class="wrap">
+    <div class="section-row">
+      <div class="section-num"><b>—</b> 01 / Selected Work</div>
+      <h2 class="section-title display">A small <span class="light">index of</span> recent <span class="red">work.</span></h2>
+      <div class="section-meta">12 of 74 ↘</div>
+    </div>
+
+    <div class="work-table">
+      <article class="work-row feat">
+        <span class="num">001</span>
+        <span class="name display">Maison Lune</span>
+        <span class="role">Boutique perfumery — full identity &amp; e-commerce</span>
+        <div class="tags"><span>Brand</span><span>Web</span><span>Shopify</span></div>
+        <span class="year">2026</span>
+        <span class="arr">→</span>
+      </article>
+      <article class="work-row feat">
+        <span class="num">002</span>
+        <span class="name display">Cypress &amp; Co.</span>
+        <span class="role">Architecture firm — identity &amp; portfolio site</span>
+        <div class="tags"><span>Identity</span><span>Web</span></div>
+        <span class="year">2026</span>
+        <span class="arr">→</span>
+      </article>
+      <article class="work-row">
+        <span class="num">003</span>
+        <span class="name display">Reverie Press</span>
+        <span class="role">Independent publisher — editorial system</span>
+        <div class="tags"><span>Editorial</span><span>Brand</span></div>
+        <span class="year">2025</span>
+        <span class="arr">→</span>
+      </article>
+      <article class="work-row">
+        <span class="num">004</span>
+        <span class="name display">North Bank</span>
+        <span class="role">Specialty coffee — flagship site &amp; ordering</span>
+        <div class="tags"><span>Web</span><span>E-comm</span></div>
+        <span class="year">2025</span>
+        <span class="arr">→</span>
+      </article>
+      <article class="work-row">
+        <span class="num">005</span>
+        <span class="name display">Atelier Voss</span>
+        <span class="role">Furniture design — bilingual portfolio</span>
+        <div class="tags"><span>Web</span><span>Art Dir.</span></div>
+        <span class="year">2025</span>
+        <span class="arr">→</span>
+      </article>
+      <article class="work-row">
+        <span class="num">006</span>
+        <span class="name display">Verbena Hotel</span>
+        <span class="role">Hospitality brand — full system, print + web</span>
+        <div class="tags"><span>Brand</span><span>Web</span><span>Print</span></div>
+        <span class="year">2024</span>
+        <span class="arr">→</span>
+      </article>
+      <article class="work-row">
+        <span class="num">007</span>
+        <span class="name display">Olive &amp; Stone</span>
+        <span class="role">Artisan grocery — identity &amp; site</span>
+        <div class="tags"><span>Brand</span><span>Web</span></div>
+        <span class="year">2024</span>
+        <span class="arr">→</span>
+      </article>
+    </div>
+
+    <div class="work-foot">
+      <span>Showing 7 of 74 — <a href="#">View archive →</a></span>
+      <span>↑ Updated weekly</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── Services ── -->
+<section class="section" id="services">
+  <div class="wrap">
+    <div class="section-row">
+      <div class="section-num"><b>—</b> 02 / Practice</div>
+      <h2 class="section-title display">Four <span class="light">disciplines.</span><br/>One <span class="red">studio.</span></h2>
+      <div class="section-meta">— Last revised 2026.04</div>
+    </div>
+
+    <div class="svc-grid">
+      <article class="svc">
+        <span class="num">— 01 / Brand</span>
+        <h3 class="display">Identity &amp; <span class="light">brand systems.</span></h3>
+        <p>Naming, marks, palettes, type systems, voice. The full architecture of how a company looks, sounds and is recognised across every surface it lives on.</p>
+        <ul class="svc-list">
+          <li><span>Brand strategy &amp; naming</span><small>2–4 wks</small></li>
+          <li><span>Identity &amp; logo systems</span><small>4–6 wks</small></li>
+          <li><span>Guidelines &amp; assets</span><small>2 wks</small></li>
+        </ul>
+      </article>
+      <article class="svc">
+        <span class="num">— 02 / Web</span>
+        <h3 class="display">Web <span class="light">design &amp;</span> development.</h3>
+        <p>Considered, fast, accessible. Marketing sites, portfolios, editorial work and bespoke product surfaces — designed and built by the same hands.</p>
+        <ul class="svc-list">
+          <li><span>Marketing &amp; portfolio sites</span><small>4–8 wks</small></li>
+          <li><span>Editorial / publication sites</span><small>6–10 wks</small></li>
+          <li><span>Bespoke product UI</span><small>by scope</small></li>
+        </ul>
+      </article>
+      <article class="svc">
+        <span class="num">— 03 / Commerce</span>
+        <h3 class="display">E-commerce <span class="light">&amp;</span> product.</h3>
+        <p>Storefronts that read like editorial and convert like flagships. Shopify, headless or custom — built around the way people actually shop.</p>
+        <ul class="svc-list">
+          <li><span>Custom Shopify themes</span><small>4–8 wks</small></li>
+          <li><span>Headless commerce</span><small>8–14 wks</small></li>
+          <li><span>Conversion-led PDP</span><small>by scope</small></li>
+        </ul>
+      </article>
+      <article class="svc">
+        <span class="num">— 04 / Care</span>
+        <h3 class="display">Stewardship &amp; <span class="light">evolution.</span></h3>
+        <p>Once the work ships, we stay close. Monthly retainers for refinement, additions and quiet, considered next chapters.</p>
+        <ul class="svc-list">
+          <li><span>Monthly retainer</span><small>ongoing</small></li>
+          <li><span>Editorial &amp; campaign work</span><small>ongoing</small></li>
+          <li><span>Performance &amp; SEO</span><small>quarterly</small></li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ── Process ── -->
+<section class="section" id="process">
+  <div class="wrap">
+    <div class="section-row">
+      <div class="section-num"><b>—</b> 03 / Process</div>
+      <h2 class="section-title display">Four <span class="light">moves.</span><br/>No <span class="red">surprises.</span></h2>
+      <div class="section-meta">— Typically 6–12 wks</div>
+    </div>
+
+    <div class="process">
+      <div class="step">
+        <span class="num">01</span>
+        <h4>Discovery</h4>
+        <p>One careful week. We listen, we read, we ask the questions you wish your last agency had. Output: a written brief.</p>
+        <span class="when">— wk 01</span>
+      </div>
+      <div class="step">
+        <span class="num">02</span>
+        <h4>Direction</h4>
+        <p>Two or three studied directions, presented in person. We commit to one and develop it deeply rather than show twenty thin ideas.</p>
+        <span class="when">— wks 02–04</span>
+      </div>
+      <div class="step">
+        <span class="num">03</span>
+        <h4>Build</h4>
+        <p>Design and engineering by the same team. Weekly Friday demos. You see the work grow, not just the deck.</p>
+        <span class="when">— wks 04–10</span>
+      </div>
+      <div class="step">
+        <span class="num">04</span>
+        <h4>Launch &amp; Care</h4>
+        <p>Quiet launch. Then we stay — for revisions, additions, and the next chapter. Most of our clients are still our clients.</p>
+        <span class="when">— wk 10 +</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Manifesto ── -->
+<section class="manifesto" id="about">
+  <div class="wrap">
+    <div class="manifesto-row">
+      <div class="num"><b>—</b> 04 / Studio</div>
+      <p class="text">
+        We believe in <b>fewer things, made carefully.</b><br/>
+        In <b>typography</b> over decoration.<br/>
+        In <span class="strike">trends</span> <b>and</b> <span class="red">long shelves.</span><br/>
+        And in design that doesn't ask to be looked at —<br/>
+        but is <b>impossible to ignore.</b>
+      </p>
+    </div>
+
+    <div class="manifesto-meta">
+      <div class="col">
+        <h5>— The Studio</h5>
+        <p><b>Founded 2021.</b> Six designers, writers and engineers based in Tbilisi, working with clients in Europe, the US and Japan. Independent &amp; founder-owned.</p>
+      </div>
+      <div class="col">
+        <h5>— How We Work</h5>
+        <p><b>One project at a time.</b> One main contact. Weekly demos. Written estimates upfront. We've never billed a single "thinking-time" hour — and never will.</p>
+      </div>
+      <div class="col">
+        <h5>— Recognition</h5>
+        <p><b>11 awards</b> across Awwwards, FWA, CSSDA and The One Show. Featured in It's Nice That, Brand New and Sidebar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Clients ── -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-row">
+      <div class="section-num"><b>—</b> 05 / Clients</div>
+      <h2 class="section-title display">A short list <span class="light">of</span> long <span class="red">friendships.</span></h2>
+      <div class="section-meta">— 30+ active</div>
+    </div>
+
+    <div class="clients-grid">
+      <div class="client">Maison Lune<small>— PFM 2026</small></div>
+      <div class="client">Cypress &amp; Co.<small>— ARCH 2026</small></div>
+      <div class="client">Reverie Press<small>— PUB 2025</small></div>
+      <div class="client">North Bank<small>— F&amp;B 2025</small></div>
+      <div class="client">Atelier Voss<small>— DSGN 2025</small></div>
+      <div class="client">Verbena Hotel<small>— HSPT 2024</small></div>
+      <div class="client">Olive &amp; Stone<small>— RTL 2024</small></div>
+      <div class="client">Salt &amp; Cedar<small>— PUB 2024</small></div>
+      <div class="client">Field Notes Lab<small>— STAT 2024</small></div>
+      <div class="client">Maison du Soir<small>— FSHN 2023</small></div>
+      <div class="client">Cordon Studio<small>— DSGN 2023</small></div>
+      <div class="client" style="background:var(--ink);color:var(--bg)">+ 22 more →<small style="color:var(--accent)">view archive</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ── -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-row">
+      <div class="section-num"><b>—</b> 06 / Questions</div>
+      <h2 class="section-title display">Frequently <span class="light">asked.</span></h2>
+      <div class="section-meta">— 04</div>
+    </div>
+
+    <div class="faq-table">
+      <details class="faq-row" open>
+        <summary><span class="n">— 01</span><span>Who do you work with?</span><span class="ic">+</span></summary>
+        <div class="a">Independent companies who care about design. Mostly hospitality, lifestyle, publishing, architecture and culture — but the vertical matters less than the ambition. We've turned down briefs that didn't fit.</div>
+      </details>
+      <details class="faq-row">
+        <summary><span class="n">— 02</span><span>How long does a project take?</span><span class="ic">+</span></summary>
+        <div class="a">Typically 6 to 12 weeks. A focused identity might be 4 weeks; a full brand-and-site engagement is closer to 10. We agree the timeline upfront and move at a steady, weekly pace.</div>
+      </details>
+      <details class="faq-row">
+        <summary><span class="n">— 03</span><span>What does it cost?</span><span class="ic">+</span></summary>
+        <div class="a">Identity engagements typically start at $14k. Full brand &amp; site projects start at $32k. We send a fixed estimate before you sign anything — no clock-watching, no billable surprises.</div>
+      </details>
+      <details class="faq-row">
+        <summary><span class="n">— 04</span><span>Can we hire you for just one part?</span><span class="ic">+</span></summary>
+        <div class="a">Yes. Plenty of our work is "site only" or "identity only". We just ask for time to get to know your business — short briefs make weak design.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<section class="cta" id="contact">
+  <div class="cta-row">
+    <div class="num"><b>—</b> 07 / Contact</div>
+    <h3 class="display">Let's start <span class="light">something</span> <span class="red">considered.</span></h3>
+    <div class="actions">
+      <a class="btn" href="mailto:hello@forma.studio">hello@forma.studio<span>→</span></a>
+      <a class="btn ghost" href="#">Book a call<span>→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ── Footer ── -->
+<footer class="foot">
+  <div class="foot-wrap">
+    <div class="foot-grid">
+      <div class="b1">
+        <a class="brand" href="#" style="font-size:1.2rem">FORMA<span class="dot"></span></a>
+        <p class="signoff display">Design with a <span class="red">point of view.</span></p>
+      </div>
+      <div class="b2">
+        <h4>STUDIO</h4>
+        <ul><li><a href="#about">About</a></li><li><a href="#process">Process</a></li><li><a>Journal</a></li><li><a>Press</a></li></ul>
+      </div>
+      <div class="b3">
+        <h4>PRACTICE</h4>
+        <ul><li><a>Brand</a></li><li><a>Web</a></li><li><a>Commerce</a></li><li><a>Care</a></li></ul>
+      </div>
+      <div class="b4">
+        <h4>CONNECT</h4>
+        <ul><li><a href="mailto:hello@forma.studio">hello@forma.studio</a></li><li><a>Are.na</a></li><li><a>Read.cv</a></li><li><a>Instagram</a></li></ul>
+      </div>
+      <div class="b5">
+        <h4>OFFICES</h4>
+        <ul><li><a>Tbilisi (HQ)</a></li><li><a>Lisbon</a></li><li><a>Tokyo</a></li></ul>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© FORMA 2021—2026 — Independent &amp; founder-owned</span>
+      <span>Site v3.2 — Made by hand, in browser</span>
+    </div>
+    <div class="foot-mark display">FORMA<span class="red">.</span><span class="reg">®</span></div>
+  </div>
+</footer>
+
+</body>
+</html>

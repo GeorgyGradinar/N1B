@@ -1,0 +1,13 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>theme bridge</title></head>
+<body>
+<script>
+(function(){
+  var p = new URLSearchParams(location.search);
+  var t = p.get('t') === 'dark' ? 'dark' : 'light';
+  var go = p.get('go') || '/en';
+  localStorage.setItem('n1b-theme', t);
+  location.replace(go);
+})();
+</script>
+</body></html>

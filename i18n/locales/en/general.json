@@ -6,7 +6,8 @@
     "services": "Services",
     "experience": "Experience",
     "pricing": "Pricing",
-    "faq": "FAQ"
+    "faq": "FAQ",
+    "contact": "Contact"
   },
   "hero": {
     "title": "N1B - Full-Cycle IT Solutions",
@@ -64,7 +65,19 @@
     }
   ],
   "footer": {
-    "copy": "© {year} N1B. All types of IT products."
+    "copy": "© {year} N1B. All types of IT products.",
+    "tagline": "Full-Cycle IT Solutions",
+    "wordmarkPre": "Let's",
+    "wordmarkAccent": "build",
+    "wordmarkPost": "something on the record."
+  },
+  "ticker": {
+    "items": [
+      "Issue 042 — Full-Cycle IT Solutions",
+      "Est. 2022 — Web · Mobile · Cloud",
+      "On the record — 50+ shipped projects",
+      "Status — Available for new projects"
+    ]
   },
   "theme": {
     "light": "Switch to light theme",

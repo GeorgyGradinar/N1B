@@ -1,59 +1,49 @@
 <template>
   <div class="layout">
-    <header class="header" :class="{ 'header--scrolled': scrolled }">
-      <div class="header-inner">
-        <NuxtLink :to="localePath('/')" class="logo">
-          <span class="logo-mark">N1B</span>
-          <span class="logo-dot" aria-hidden="true"></span>
+    <header class="ed-header" :class="{ 'ed-header--scrolled': scrolled }">
+      <div class="ed-header-inner">
+        <NuxtLink :to="localePath('/')" class="ed-brand">
+          <span class="ed-brand-mark" aria-hidden="true">N</span>
+          <span class="ed-brand-text">N1B</span>
+          <span class="ed-brand-slash">/ studio</span>
         </NuxtLink>
 
-        <nav class="nav" aria-label="Main navigation">
-          <NuxtLink :to="localePath('/') + '#services'" class="nav-link">{{ t('nav.services') }}</NuxtLink>
-          <NuxtLink :to="localePath('/') + '#experience'" class="nav-link">{{ t('nav.experience') }}</NuxtLink>
-          <NuxtLink :to="localePath('/') + '#faq'" class="nav-link">{{ t('nav.faq') }}</NuxtLink>
+        <nav class="ed-nav" aria-label="Main navigation">
+          <NuxtLink :to="localePath('/') + '#services'" class="ed-nav-link">{{ t('nav.services') }}</NuxtLink>
+          <NuxtLink :to="localePath('/') + '#experience'" class="ed-nav-link">{{ t('nav.experience') }}</NuxtLink>
+          <NuxtLink :to="localePath('/') + '#faq'" class="ed-nav-link">{{ t('nav.faq') }}</NuxtLink>
         </nav>
 
-        <div class="header-actions">
+        <div class="ed-header-actions">
           <!-- Language dropdown -->
-          <div ref="langDropdownRef" class="lang-dropdown">
+          <div ref="langDropdownRef" class="ed-lang">
             <button
               type="button"
-              class="lang-trigger"
+              class="ed-lang-trigger"
               :class="{ 'is-open': langOpen }"
               :aria-expanded="langOpen"
               aria-haspopup="listbox"
               @click.stop="langOpen = !langOpen"
             >
-              <svg class="lang-globe" width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
-                <circle cx="6.5" cy="6.5" r="5.5" stroke="currentColor" stroke-width="1.2"/>
-                <path d="M6.5 1C4.7 3 4.7 10 6.5 12M6.5 1C8.3 3 8.3 10 6.5 12M1 6.5h11" stroke="currentColor" stroke-width="1.2"/>
-              </svg>
-              <span class="lang-current">{{ String(locale).toUpperCase() }}</span>
-              <svg
-                class="lang-chevron"
-                :class="{ 'is-open': langOpen }"
-                width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true"
-              >
-                <path d="M2 4l3.5 3.5L9 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+              <span>{{ String(locale).toUpperCase() }}</span>
+              <svg :class="{ 'is-open': langOpen }" width="10" height="10" viewBox="0 0 11 11" fill="none" aria-hidden="true">
+                <path d="M2 4l3.5 3.5L9 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
               </svg>
             </button>
 
-            <Transition name="dropdown">
-              <div v-if="langOpen" class="lang-menu" role="listbox">
+            <Transition name="ed-dropdown">
+              <div v-if="langOpen" class="ed-lang-menu" role="listbox">
                 <NuxtLink
                   v-for="loc in availableLocales"
                   :key="loc.code"
                   :to="switchLocalePath(loc.code)"
-                  class="lang-menu-item"
+                  class="ed-lang-item"
                   :class="{ active: locale === loc.code }"
                   role="option"
                   :aria-selected="locale === loc.code"
                   @click="langOpen = false"
                 >
                   {{ loc.name }}
-                  <svg v-if="locale === loc.code" class="lang-check" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-                    <path d="M2 6l2.5 2.5L10 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
                 </NuxtLink>
               </div>
             </Transition>
@@ -62,39 +52,68 @@
           <!-- Theme toggle -->
           <button
             type="button"
-            class="theme-toggle"
+            class="ed-theme"
             :aria-label="isDark ? t('theme.light') : t('theme.dark')"
             :aria-pressed="isDark"
             @click="toggle"
           >
-            <span v-if="isDark" aria-hidden="true">☀️</span>
-            <span v-else aria-hidden="true">🌙</span>
+            <span v-if="isDark" aria-hidden="true">☀</span>
+            <span v-else aria-hidden="true">☾</span>
           </button>
+
+          <NuxtLink :to="localePath('/') + '#services'" class="ed-btn ed-cta-btn">
+            {{ t('hero.cta') }} <span aria-hidden="true">→</span>
+          </NuxtLink>
         </div>
       </div>
     </header>
 
-    <main class="main">
+    <!-- Ticker bar -->
+    <div class="ed-ticker" aria-hidden="true">
+      <div class="ed-ticker-track">
+        <span v-for="(item, i) in tickerLoop" :key="i" class="ed-ticker-item">
+          <b>★</b> {{ item }}
+        </span>
+      </div>
+    </div>
+
+    <main class="ed-main">
       <slot />
     </main>
 
-    <footer class="footer">
-      <div class="footer-inner">
-        <div class="footer-brand">
-          <div class="footer-logo-wrap">
-            <span class="footer-logo">N1B</span>
-            <span class="footer-logo-dot" aria-hidden="true"></span>
+    <footer class="ed-foot">
+      <div class="ed-foot-inner">
+        <h2 class="ed-foot-h">
+          <template v-if="t('footer.wordmarkPre')">{{ t('footer.wordmarkPre') + ' ' }}</template><em>{{ t('footer.wordmarkAccent') }}</em>{{ ' ' + t('footer.wordmarkPost') }}
+        </h2>
+
+        <div class="ed-foot-grid">
+          <div class="ed-foot-col">
+            <h4>Studio</h4>
+            <p class="ed-foot-tagline">{{ t('footer.tagline') }}</p>
           </div>
-          <p class="footer-tagline">Full-Cycle IT Solutions</p>
+          <div class="ed-foot-col">
+            <h4>{{ t('nav.services') }}</h4>
+            <ul>
+              <li><NuxtLink :to="localePath('/') + '#services'">{{ t('nav.services') }}</NuxtLink></li>
+              <li><NuxtLink :to="localePath('/') + '#experience'">{{ t('nav.experience') }}</NuxtLink></li>
+              <li><NuxtLink :to="localePath('/') + '#faq'">{{ t('nav.faq') }}</NuxtLink></li>
+            </ul>
+          </div>
+          <div class="ed-foot-col">
+            <h4>Languages</h4>
+            <ul>
+              <li v-for="loc in availableLocales" :key="loc.code">
+                <NuxtLink :to="switchLocalePath(loc.code)">{{ loc.name }}</NuxtLink>
+              </li>
+            </ul>
+          </div>
         </div>
 
-        <nav class="footer-links" aria-label="Footer navigation">
-          <NuxtLink :to="localePath('/') + '#services'" class="footer-link">{{ t('nav.services') }}</NuxtLink>
-          <NuxtLink :to="localePath('/') + '#experience'" class="footer-link">{{ t('nav.experience') }}</NuxtLink>
-          <NuxtLink :to="localePath('/') + '#faq'" class="footer-link">{{ t('nav.faq') }}</NuxtLink>
-        </nav>
-
-        <p class="footer-copy">{{ t('footer.copy', { year: '2023' }) }}</p>
+        <div class="ed-foot-bot">
+          <span>{{ t('footer.copy', { year: new Date().getFullYear() }) }}</span>
+          <span>Issue 042 · Vol. III · Made by hand</span>
+        </div>
       </div>
     </footer>
   </div>
@@ -102,11 +121,17 @@
 
 <script setup lang="ts">
 const { isDark, toggle } = useTheme()
-const { t, locale, localePath, switchLocalePath, availableLocales } = useAppI18n()
+const { t, get, locale, localePath, switchLocalePath, availableLocales } = useAppI18n()
 
 const scrolled = ref(false)
 const langOpen = ref(false)
 const langDropdownRef = ref<HTMLElement | null>(null)
+
+const tickerItems = computed(() => {
+  const raw = get<unknown>('ticker.items')
+  return Array.isArray(raw) ? (raw as string[]) : []
+})
+const tickerLoop = computed(() => [...tickerItems.value, ...tickerItems.value])
 
 onMounted(() => {
   const onScroll = () => { scrolled.value = window.scrollY > 20 }
@@ -134,328 +159,385 @@ onMounted(() => {
 }
 
 /* ── Header ── */
-.header {
+.ed-header {
   position: sticky;
   top: 0;
   z-index: 200;
-  background: var(--color-header-bg);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border-bottom: 1px solid transparent;
-  transition: border-color 0.3s, box-shadow 0.3s;
+  background: var(--bg);
+  border-bottom: var(--line-w) solid var(--ink);
+  transition: box-shadow 0.25s;
 }
 
-.header--scrolled {
-  border-bottom-color: var(--color-card-border);
-  box-shadow: 0 2px 24px rgba(0, 0, 0, 0.07);
+.ed-header--scrolled {
+  box-shadow: 0 4px 0 -2px rgba(11, 11, 11, 0.06);
 }
 
-.header-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
-  height: 64px;
+.ed-header-inner {
+  width: 100%;
+  padding: 14px var(--gutter);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 2rem;
+  gap: 24px;
 }
 
-/* ── Logo ── */
-.logo {
+/* ── Brand ── */
+.ed-brand {
   display: flex;
   align-items: center;
-  gap: 3px;
-  text-decoration: none;
+  gap: 10px;
+  font-family: "Inter", sans-serif;
+  font-weight: 900;
+  font-size: 1.4rem;
+  letter-spacing: -0.02em;
+  color: var(--ink);
   flex-shrink: 0;
 }
 
-.logo-mark {
-  font-size: 1.45rem;
-  font-weight: 800;
-  letter-spacing: -0.05em;
-  color: var(--color-text);
-  transition: color 0.2s;
-}
-
-.logo-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--color-accent);
-  margin-bottom: 12px;
+.ed-brand-mark {
+  width: 34px;
+  height: 34px;
+  background: var(--ink);
+  color: var(--bg);
+  display: grid;
+  place-items: center;
+  font-family: "Fraunces", serif;
+  font-weight: 900;
+  font-size: 1.1rem;
+  transform: rotate(-4deg);
   flex-shrink: 0;
-  animation: pulse 2.5s ease-in-out infinite;
 }
 
-@keyframes pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.55; transform: scale(0.75); }
+.ed-brand-slash {
+  font-family: "Fraunces", serif;
+  font-style: italic;
+  font-weight: 500;
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin-left: 4px;
 }
 
-.logo:hover .logo-mark {
-  color: var(--color-accent);
-  text-decoration: none;
-}
+.ed-brand:hover { color: var(--ink); }
 
 /* ── Nav ── */
-.nav {
+.ed-nav {
   display: flex;
-  gap: 0.25rem;
+  gap: 28px;
   flex: 1;
   justify-content: center;
+  font-family: "Inter", sans-serif;
 }
 
-.nav-link {
-  padding: 0.4rem 0.9rem;
-  font-size: 0.875rem;
+.ed-nav-link {
+  position: relative;
+  padding: 6px 0;
+  font-size: 0.92rem;
   font-weight: 500;
-  color: var(--color-text-muted);
-  text-decoration: none;
-  border-radius: 8px;
-  transition: color 0.2s, background 0.2s;
+  color: var(--ink);
 }
 
-.nav-link:hover {
-  color: var(--color-text);
-  background: var(--color-tag-bg);
-  text-decoration: none;
+.ed-nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
 }
 
-/* ── Header Actions ── */
-.header-actions {
+.ed-nav-link:hover {
+  color: var(--accent);
+}
+
+.ed-nav-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* ── Header actions ── */
+.ed-header-actions {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 10px;
   flex-shrink: 0;
 }
 
 /* ── Language dropdown ── */
-.lang-dropdown {
+.ed-lang {
   position: relative;
 }
 
-.lang-trigger {
+.ed-lang-trigger {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  padding: 0.35rem 0.75rem;
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.03em;
-  color: var(--color-text-muted);
-  background: var(--color-bg);
-  border: 1px solid var(--color-card-border);
-  border-radius: 8px;
-  cursor: pointer;
-  transition: color 0.2s, background 0.2s, border-color 0.2s;
-  white-space: nowrap;
-}
-
-.lang-trigger:hover,
-.lang-trigger.is-open {
-  color: var(--color-text);
-  background: var(--color-tag-bg);
-  border-color: rgba(var(--color-accent-rgb), 0.35);
-}
-
-.lang-globe {
-  color: var(--color-text-muted);
-  flex-shrink: 0;
-}
-
-.lang-current {
+  gap: 6px;
+  padding: 7px 11px;
+  font-family: "JetBrains Mono", monospace;
   font-size: 0.78rem;
-  letter-spacing: 0.05em;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  background: transparent;
+  border: var(--line-w) solid var(--ink);
+  cursor: pointer;
 }
 
-.lang-chevron {
-  color: var(--color-text-muted);
-  flex-shrink: 0;
+.ed-lang-trigger:hover,
+.ed-lang-trigger.is-open {
+  background: var(--hi);
+  color: var(--ink);
+}
+
+.ed-lang-trigger svg {
   transition: transform 0.25s ease;
 }
 
-.lang-chevron.is-open {
+.ed-lang-trigger svg.is-open {
   transform: rotate(180deg);
 }
 
-.lang-menu {
+.ed-lang-menu {
   position: absolute;
-  top: calc(100% + 8px);
+  top: calc(100% + 6px);
   right: 0;
-  min-width: 100px;
-  background: var(--color-card-bg);
-  border: 1px solid var(--color-card-border);
-  border-radius: 12px;
-  padding: 0.35rem;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.14), 0 2px 8px rgba(0, 0, 0, 0.08);
+  min-width: 88px;
+  background: var(--paper);
+  border: var(--line-w) solid var(--ink);
+  box-shadow: 4px 4px 0 var(--ink);
   z-index: 300;
+  display: flex;
+  flex-direction: column;
 }
 
-.lang-menu-item {
+.ed-lang-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.5rem;
-  padding: 0.5rem 0.75rem;
-  font-size: 0.82rem;
-  font-weight: 600;
+  padding: 9px 14px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.78rem;
+  font-weight: 500;
   letter-spacing: 0.04em;
-  color: var(--color-text-muted);
-  border-radius: 8px;
-  text-decoration: none;
-  cursor: pointer;
-  transition: color 0.15s, background 0.15s;
+  color: var(--ink);
+  border-bottom: 1px solid var(--ink);
 }
 
-.lang-menu-item:hover {
-  color: var(--color-text);
-  background: var(--color-tag-bg);
-  text-decoration: none;
+.ed-lang-item:last-child { border-bottom: none; }
+
+.ed-lang-item:hover {
+  background: var(--hi);
+  color: var(--ink);
 }
 
-.lang-menu-item.active {
-  color: var(--color-accent);
-  background: var(--color-tag-bg);
+.ed-lang-item.active {
+  background: var(--ink);
+  color: var(--hi);
 }
 
-.lang-check {
-  color: var(--color-accent);
-  flex-shrink: 0;
+.ed-dropdown-enter-active,
+.ed-dropdown-leave-active {
+  transition: opacity 0.18s ease, transform 0.18s ease;
 }
 
-/* Dropdown transition */
-.dropdown-enter-active,
-.dropdown-leave-active {
-  transition: opacity 0.2s ease, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.dropdown-enter-from,
-.dropdown-leave-to {
+.ed-dropdown-enter-from,
+.ed-dropdown-leave-to {
   opacity: 0;
-  transform: translateY(-6px) scale(0.97);
+  transform: translateY(-4px);
 }
 
-/* ── Theme Toggle ── */
-.theme-toggle {
-  width: 36px;
-  height: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* ── Theme toggle ── */
+.ed-theme {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
   font-size: 1rem;
-  background: var(--color-bg);
-  border: 1px solid var(--color-card-border);
-  border-radius: 8px;
+  background: transparent;
+  color: var(--ink);
+  border: var(--line-w) solid var(--ink);
   cursor: pointer;
-  transition: background 0.2s, border-color 0.2s;
+  transition: background 0.15s, color 0.15s;
+  font-family: serif;
 }
 
-.theme-toggle:hover {
-  background: var(--color-tag-bg);
-  border-color: rgba(var(--color-accent-rgb), 0.35);
+.ed-theme:hover {
+  background: var(--ink);
+  color: var(--hi);
+}
+
+/* ── CTA button ── */
+.ed-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 14px;
+  font-family: "Inter", sans-serif;
+  font-size: 0.86rem;
+  font-weight: 600;
+  background: var(--ink);
+  color: var(--bg);
+  border: var(--line-w) solid var(--ink);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.ed-cta-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 var(--accent);
+  color: var(--bg);
+}
+
+/* ── Ticker ── */
+.ed-ticker {
+  background: var(--ink);
+  color: var(--bg);
+  border-bottom: var(--line-w) solid var(--ink);
+  padding: 10px 0;
+  overflow: hidden;
+}
+
+.ed-ticker-track {
+  display: flex;
+  gap: 48px;
+  white-space: nowrap;
+  animation: ed-ticker 40s linear infinite;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+}
+
+.ed-ticker-item {
+  flex-shrink: 0;
+  opacity: 0.85;
+}
+
+.ed-ticker-item b {
+  color: var(--hi);
+  margin-right: 8px;
+  font-weight: normal;
 }
 
 /* ── Main ── */
-.main {
+.ed-main {
   flex: 1;
 }
 
 /* ── Footer ── */
-.footer {
-  background: var(--color-footer-bg);
-  border-top: 1px solid var(--color-footer-border);
-  padding: 3rem 2rem;
+.ed-foot {
+  background: var(--accent);
+  color: var(--ink);
+  padding: clamp(56px, 5vw, 96px) var(--gutter) clamp(24px, 2.4vw, 40px);
+  position: relative;
+  overflow: hidden;
+  border-top: var(--line-w) solid var(--ink);
 }
 
-.footer-inner {
-  max-width: 1200px;
-  margin: 0 auto;
+[data-theme="dark"] .ed-foot {
+  color: #1a0e08;
+}
+
+.ed-foot-inner {
+  width: 100%;
+}
+
+.ed-foot-h {
+  font-family: "Fraunces", serif;
+  font-weight: 900;
+  font-size: clamp(2.6rem, 9vw, 11rem);
+  line-height: 0.84;
+  letter-spacing: -0.05em;
+  margin: 0 0 clamp(48px, 5vw, 96px);
+  max-width: 16ch;
+}
+
+.ed-foot-h em {
+  font-style: italic;
+  font-weight: 600;
+  color: var(--paper);
+}
+
+.ed-foot-grid {
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: center;
-  gap: 2rem;
+  grid-template-columns: 1.6fr 0.8fr 0.8fr;
+  gap: clamp(28px, 3vw, 64px);
+  border-top: var(--line-w) solid var(--ink);
+  padding-top: clamp(28px, 3vw, 48px);
 }
 
-.footer-brand {
+.ed-foot-col h4 {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin: 0 0 14px;
+}
+
+.ed-foot-col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
+  gap: 8px;
 }
 
-.footer-logo-wrap {
+.ed-foot-col a {
+  font-family: "Inter", sans-serif;
+  font-size: 0.96rem;
+  font-weight: 500;
+  color: inherit;
+}
+
+.ed-foot-col a:hover {
+  font-style: italic;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+  color: inherit;
+}
+
+.ed-foot-tagline {
+  font-family: "Fraunces", serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.1rem;
+  margin: 0;
+  max-width: 24ch;
+  line-height: 1.3;
+}
+
+.ed-foot-bot {
+  margin-top: clamp(36px, 4vw, 64px);
+  padding-top: 22px;
+  border-top: var(--line-w) solid var(--ink);
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 3px;
-}
-
-.footer-logo {
-  font-size: 1.3rem;
-  font-weight: 800;
-  letter-spacing: -0.05em;
-  color: var(--color-footer-logo);
-}
-
-.footer-logo-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--color-accent);
-  margin-bottom: 10px;
-}
-
-.footer-tagline {
-  margin: 0;
+  font-family: "JetBrains Mono", monospace;
   font-size: 0.78rem;
-  color: var(--color-footer-text);
-  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
-.footer-links {
-  display: flex;
-  gap: 1.5rem;
-}
-
-.footer-link {
-  font-size: 0.85rem;
-  color: var(--color-footer-text);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-.footer-link:hover {
-  color: var(--color-footer-link-hover);
-  text-decoration: none;
-}
-
-.footer-copy {
-  margin: 0;
-  font-size: 0.78rem;
-  color: var(--color-footer-text);
-  text-align: right;
+@media (max-width: 980px) {
+  .ed-nav { display: none; }
+  .ed-cta-btn { display: none; }
 }
 
 @media (max-width: 768px) {
-  .header-inner {
-    padding: 0 1.25rem;
-    gap: 1rem;
-  }
-
-  .nav {
-    display: none;
-  }
-
-  .footer-inner {
+  .ed-header-inner { padding: 12px 18px; gap: 12px; }
+  .ed-brand-slash { display: none; }
+  .ed-foot-grid {
     grid-template-columns: 1fr;
-    text-align: center;
+    gap: 28px;
   }
-
-  .footer-links {
-    justify-content: center;
-  }
-
-  .footer-copy {
-    text-align: center;
-  }
+  .ed-foot-bot { font-size: 0.7rem; }
 }
 </style>

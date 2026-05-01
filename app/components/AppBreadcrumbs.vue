@@ -33,50 +33,55 @@ withDefaults(
     items: BreadcrumbItem[]
     separator?: string
   }>(),
-  { separator: '›' }
+  { separator: '/' }
 )
 </script>
 
 <style scoped>
 .breadcrumbs {
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .breadcrumbs-list {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 0.25rem;
+  gap: 10px;
   list-style: none;
   margin: 0;
   padding: 0;
-  font-size: 0.9rem;
-  color: var(--color-text-muted);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
 }
 
 .breadcrumbs-item {
   display: inline-flex;
   align-items: center;
-  gap: 0.25rem;
+  gap: 10px;
 }
 
 .breadcrumbs-link {
-  color: var(--color-text-muted);
-  text-decoration: none;
+  color: var(--muted);
+  border-bottom: 1.5px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
 }
 
 .breadcrumbs-link:hover {
-  color: var(--color-accent);
+  color: var(--accent);
+  border-bottom-color: var(--accent);
 }
 
 .breadcrumbs-sep {
-  color: var(--color-text-muted);
-  opacity: 0.7;
+  color: var(--accent);
   user-select: none;
+  font-weight: 600;
 }
 
 .breadcrumbs-current {
-  color: var(--color-text);
+  color: var(--ink);
   font-weight: 500;
 }
 </style>
