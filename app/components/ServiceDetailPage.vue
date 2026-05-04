@@ -34,7 +34,7 @@
         </div>
 
         <h1 class="article-title serif">
-          <em>{{ titleParts.italic }}</em><template v-if="titleParts.rest"> {{ titleParts.rest }}</template>.
+          <em>{{ titleParts.italic }}</em>{{ titleParts.rest ? ' ' + titleParts.rest : '' }}.
         </h1>
 
         <p v-if="leadText" class="article-lead">{{ leadText }}</p>
@@ -552,6 +552,7 @@ useHead({
   font-size: clamp(2.6rem, 8.6vw, 11rem);
   line-height: 0.9;
   letter-spacing: -0.045em;
+  word-spacing: 0.12em;
   color: var(--ink);
   margin: 0;
   max-width: 16ch;
@@ -686,6 +687,7 @@ useHead({
   font-weight: 800;
   font-size: clamp(1.8rem, 4vw, 4.4rem);
   letter-spacing: -0.035em;
+  word-spacing: 0.08em;
   line-height: 0.98;
   color: var(--ink);
   margin: 0;
@@ -801,76 +803,82 @@ useHead({
 /* ── feature matrix comparison ── */
 .matrix-grid {
   display: grid;
-  grid-template-columns: minmax(160px, 1.4fr) repeat(calc(var(--matrix-cols) - 1), 1fr);
+  grid-template-columns: minmax(180px, 1.6fr) repeat(calc(var(--matrix-cols) - 1), 1fr);
   border-top: var(--line-w) solid var(--ink);
   border-left: var(--line-w) solid var(--ink);
+  background: var(--paper);
 }
 
 .matrix-col {
   border-right: var(--line-w) solid var(--ink);
   border-bottom: var(--line-w) solid var(--ink);
-  padding: clamp(14px, 1.4vw, 24px) clamp(14px, 1.4vw, 24px);
+  padding: clamp(16px, 1.6vw, 28px) clamp(16px, 1.6vw, 28px);
   display: flex;
   align-items: center;
-  font-size: clamp(0.94rem, 1vw, 1.08rem);
+  font-size: clamp(0.96rem, 1vw, 1.08rem);
+  line-height: 1.5;
   color: var(--ink-2);
-  min-height: clamp(54px, 4vw, 72px);
+  min-height: clamp(56px, 4vw, 72px);
 }
 
 .matrix-col--head {
   background: var(--ink);
   color: var(--paper);
-  font-weight: 600;
+  padding: clamp(14px, 1.4vw, 24px) clamp(16px, 1.6vw, 28px);
 }
 .matrix-col--head .serif {
   font-family: "Fraunces", serif;
   font-weight: 700;
-  font-size: clamp(1rem, 1.2vw, 1.4rem);
+  font-size: clamp(1.1rem, 1.4vw, 1.6rem);
   letter-spacing: -0.015em;
+  line-height: 1.15;
 }
 .matrix-col--head .mono {
   font-family: "JetBrains Mono", monospace;
   font-size: 0.78rem;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--hi);
+  font-weight: 600;
 }
-
-.matrix-col--feat { font-weight: 600; }
 
 .matrix-col--label {
   background: var(--paper);
   font-weight: 500;
   color: var(--ink);
+  font-family: "Fraunces", serif;
+  font-size: clamp(1rem, 1.05vw, 1.15rem);
+  letter-spacing: -0.005em;
 }
 
 .matrix-col--val {
   justify-content: center;
 }
 
+/* subtle column tint for non-header highlight cells; header keeps full hi */
 .matrix-col.is-highlight {
+  background: color-mix(in srgb, var(--hi) 22%, var(--paper));
+}
+.matrix-col.is-highlight.matrix-col--head {
   background: var(--hi);
   color: var(--ink);
 }
-.matrix-col.is-highlight.matrix-col--head { color: var(--ink); }
+.matrix-col.is-highlight.matrix-col--head .serif {
+  color: var(--ink);
+}
 
 .matrix-mark {
   font-family: "JetBrains Mono", monospace;
-  font-size: 1.4rem;
+  font-size: 1.15rem;
   font-weight: 700;
-  width: 28px;
-  height: 28px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border: 1.5px solid currentColor;
-  border-radius: 50%;
+  line-height: 1;
 }
 .matrix-mark--yes {
   color: var(--accent);
 }
 .matrix-mark--no {
   color: var(--muted);
+  opacity: 0.55;
 }
 
 /* ── calculator ── */
@@ -1119,6 +1127,7 @@ useHead({
   font-weight: 900;
   font-size: clamp(2.2rem, 6vw, 6.4rem);
   letter-spacing: -0.04em;
+  word-spacing: 0.1em;
   line-height: 0.95;
   margin: 0 0 2rem;
   max-width: 22ch;

@@ -450,6 +450,7 @@ onMounted(() => {
   font-size: clamp(2.6rem, 9vw, 11rem);
   line-height: 0.84;
   letter-spacing: -0.05em;
+  word-spacing: 0.14em;
   margin: 0 0 clamp(48px, 5vw, 96px);
   max-width: 16ch;
 }

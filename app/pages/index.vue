@@ -354,6 +354,7 @@ onMounted(() => {
   font-size: clamp(2.6rem, 9.4vw, 12rem);
   line-height: 0.9;
   letter-spacing: -0.045em;
+  word-spacing: 0.12em;
   color: var(--ink);
   margin: 0;
   display: flex;
@@ -496,6 +497,7 @@ onMounted(() => {
   font-weight: 800;
   font-size: clamp(2rem, 5.4vw, 7rem);
   letter-spacing: -0.035em;
+  word-spacing: 0.08em;
   line-height: 0.98;
   color: var(--ink);
   margin: 0;
