@@ -68,21 +68,43 @@
             :class="card.layoutClass"
             :style="{ '--delay': `${ci * 0.06}s` }"
           >
-            <NuxtLink
-              :to="card.cat.subKeys[0] ? localePath(`/services/${card.cat.id}/${card.cat.subKeys[0]}`) : localePath('/')"
-              class="ed-svc-link"
-            >
-              <div class="ed-svc-arrow" aria-hidden="true">↗</div>
-              <div class="ed-svc-num mono">SVC.{{ String(ci + 1).padStart(3, '0') }} · {{ card.cat.icon }}</div>
+            <div class="ed-svc-link">
+              <div class="ed-svc-num-row">
+                <span class="ed-svc-num mono">SVC.{{ String(ci + 1).padStart(3, '0') }}</span>
+                <span class="ed-svc-num-sep mono" aria-hidden="true">·</span>
+                <span class="ed-svc-icon" aria-hidden="true">
+                  <svg v-if="card.cat.id === 'sites'" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="miter">
+                    <rect x="2" y="4" width="20" height="16"/>
+                    <line x1="2" y1="9" x2="22" y2="9"/>
+                  </svg>
+                  <svg v-else-if="card.cat.id === 'apps'" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="miter">
+                    <rect x="7" y="2" width="10" height="20"/>
+                    <line x1="10" y1="18" x2="14" y2="18"/>
+                  </svg>
+                  <svg v-else-if="card.cat.id === 'optimization'" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="miter">
+                    <path d="M14 2 L5 13 L11 13 L10 22 L19 11 L13 11 Z"/>
+                  </svg>
+                  <svg v-else-if="card.cat.id === 'recruitment'" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="miter">
+                    <circle cx="12" cy="8" r="4"/>
+                    <path d="M4 22 C 4 17, 8 14, 12 14 C 16 14, 20 17, 20 22"/>
+                  </svg>
+                </span>
+              </div>
               <h3 class="ed-svc-title serif">{{ t(`servicesTree.${card.cat.id}.title`) }}</h3>
               <p class="ed-svc-desc">{{ t(`servicesTree.${card.cat.id}.shortDesc`) }}</p>
               <ul class="ed-svc-list">
                 <li v-for="(subKey, idx) in card.cat.subKeys" :key="subKey">
-                  <span>{{ t(`servicesTree.${card.cat.id}.sub.${subKey}`) }}</span>
-                  <small>{{ String(idx + 1).padStart(2, '0') }}</small>
+                  <NuxtLink
+                    :to="localePath(`/services/${card.cat.id}/${subKey}`)"
+                    class="ed-svc-list-link"
+                  >
+                    <span class="ed-svc-list-text">{{ t(`servicesTree.${card.cat.id}.sub.${subKey}`) }}</span>
+                    <small class="ed-svc-list-num">{{ String(idx + 1).padStart(2, '0') }}</small>
+                    <span class="ed-svc-list-arrow" aria-hidden="true">→</span>
+                  </NuxtLink>
                 </li>
               </ul>
-            </NuxtLink>
+            </div>
           </article>
         </div>
       </div>
@@ -543,16 +565,12 @@ onMounted(() => {
 .ed-svc-card:hover .ed-svc-link { color: var(--bg); }
 .ed-svc-card:hover .ed-svc-num,
 .ed-svc-card:hover .ed-svc-desc { color: var(--hi); }
-.ed-svc-card:hover .ed-svc-arrow { transform: translate(8px, -8px); }
 
-.ed-svc-arrow {
-  position: absolute;
-  top: clamp(20px, 1.8vw, 32px);
-  right: clamp(20px, 1.8vw, 32px);
-  font-family: "Fraunces", serif;
-  font-size: clamp(1.6rem, 2vw, 2.4rem);
-  font-weight: 600;
-  transition: transform 0.25s ease;
+.ed-svc-num-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
 }
 
 .ed-svc-num {
@@ -561,6 +579,26 @@ onMounted(() => {
   color: var(--muted);
   text-transform: uppercase;
 }
+
+.ed-svc-num-sep {
+  font-size: clamp(0.78rem, 0.84vw, 0.9rem);
+  color: var(--muted);
+  opacity: 0.6;
+}
+
+.ed-svc-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink);
+  transition: color 0.2s ease;
+}
+
+.ed-svc-icon svg {
+  display: block;
+}
+
+.ed-svc-card:hover .ed-svc-icon { color: var(--hi); }
 
 .ed-svc-title {
   font-family: "Fraunces", serif;
@@ -585,7 +623,7 @@ onMounted(() => {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 0;
   margin: auto 0 0;
   padding: 18px 0 0;
   border-top: var(--line-w) dashed currentColor;
@@ -593,19 +631,50 @@ onMounted(() => {
 }
 
 .ed-svc-list li {
-  display: flex;
-  justify-content: space-between;
+  border-bottom: 1px dashed currentColor;
+}
+.ed-svc-list li:last-child { border-bottom: none; }
+
+.ed-svc-list-link {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
   align-items: baseline;
   gap: 12px;
-  padding: 6px 0;
+  padding: 10px 0;
+  color: inherit;
+  text-decoration: none;
+  position: relative;
+  transition: color 0.15s ease, padding 0.18s ease;
 }
 
-.ed-svc-list li small {
+.ed-svc-list-link:hover {
+  color: var(--accent);
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+.ed-svc-card:hover .ed-svc-list-link:hover { color: var(--hi); }
+
+.ed-svc-list-num {
   font-family: "JetBrains Mono", monospace;
   font-size: clamp(0.7rem, 0.76vw, 0.82rem);
   letter-spacing: 0.16em;
   text-transform: uppercase;
   opacity: 0.6;
+}
+
+.ed-svc-list-arrow {
+  font-family: "Fraunces", serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.ed-svc-list-link:hover .ed-svc-list-arrow {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 /* ═══════════════ STATS / EXPERIENCE ═══════════════ */
